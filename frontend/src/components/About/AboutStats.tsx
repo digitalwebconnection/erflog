@@ -26,7 +26,7 @@ const AboutStats = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative group p-6 rounded-[1.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:shadow-[#FDC017]/10 transition-all duration-500"
+              className="relative group p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:shadow-[#FDC017]/10 transition-all duration-500"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#FDC017]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[1.5rem]" />
               <motion.div 

@@ -90,7 +90,7 @@ const ErfolgForm = () => {
           </div>
 
           {/* RIGHT FORM */}
-          <div className="bg-white p-8 rounded-3xl shadow-xl border border-black/10">
+          <div className="bg-white p-8 rounded-xl shadow-xl border border-black/10">
             <h3 className="text-2xl font-semibold mb-6 text-center text-accent">
               Book Your Session
             </h3>

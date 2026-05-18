@@ -51,7 +51,9 @@ const EditingSubmission = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-             <h2 className="text-4xl font-bold text-[#031627] mb-4">Our Editorial Expertise</h2>
+             <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+               Our <span className="text-[#FDC017]">Editorial Expertise</span>
+             </h2>
              <p className="text-gray-500 max-w-2xl mx-auto text-lg">We provide multi-layered review processes to ensure your application is beyond reproach.</p>
           </div>
           
@@ -65,9 +67,9 @@ const EditingSubmission = () => {
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="p-10 rounded-[40px] bg-gray-50 border border-gray-100 hover:bg-[#031627] hover:text-white transition-all duration-500 group"
+                className="p-10 rounded-xl bg-gray-50 border border-gray-100 hover:bg-[#031627] hover:text-white transition-all duration-500 group"
               >
-                <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-[#FDC017] mb-8 shadow-sm group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all">
+                <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-[#FDC017] mb-8 shadow-sm group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all">
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
@@ -79,7 +81,7 @@ const EditingSubmission = () => {
       </section>
 
       {/* NEW SECTION: The Submission Checklist */}
-      <section className="py-24 bg-[#031627] text-white overflow-hidden">
+      <section className="py-12 bg-[#031627] text-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
@@ -107,37 +109,99 @@ const EditingSubmission = () => {
                   ))}
                </div>
             </div>
-            <div className="lg:w-1/2 relative">
-               <div className="grid grid-cols-2 gap-4">
-                  <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop" alt="Work" className="rounded-2xl" />
-                  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Digital" className="rounded-2xl mt-8" />
-               </div>
-               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#FDC017] rounded-full blur-[120px] opacity-20" />
-            </div>
+             <div className="lg:w-1/2 relative w-full h-[380px] flex items-center mt-8 lg:mt-0">
+                {/* Decorative glow background */}
+                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#FDC017] rounded-full blur-[120px] opacity-15" />
+
+                {/* Overlapping Collage / Masonry */}
+                <div className="relative w-full h-full">
+                  {/* Image 1: Dominant Left */}
+                  <motion.img 
+                    initial={{ opacity: 0, x: -30, y: 10 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    whileHover={{ scale: 1.03, zIndex: 30 }}
+                    src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Workplace Analysis" 
+                    className="absolute left-0 top-[40px] w-[55%] h-[240px] rounded-xl object-cover shadow-2xl transition-all duration-500 z-10" 
+                  />
+
+                  {/* Image 2: Accent Right Top */}
+                  <motion.img 
+                    initial={{ opacity: 0, x: 30, y: -20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    whileHover={{ scale: 1.03, zIndex: 30 }}
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Digital Management" 
+                    className="absolute right-0 top-0 w-[50%] h-[190px] rounded-xl object-cover shadow-xl transition-all duration-500 z-20" 
+                  />
+
+                  {/* Image 3: Center Bottom (Overlapping Both) */}
+                  <motion.img 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    whileHover={{ scale: 1.03, zIndex: 30 }}
+                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Expert Validation" 
+                    className="absolute left-[25%] bottom-[10px] w-[50%] h-[160px] rounded-xl object-cover shadow-2xl transition-all duration-500 z-25 border-4 border-[#031627]" 
+                  />
+                </div>
+             </div>
           </div>
         </div>
       </section>
 
       {/* NEW SECTION: Quality Assurance Process */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 bg-gray-50">
          <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center mb-16">
-               <h2 className="text-4xl font-bold text-[#031627] mb-6">The Success Editing Loop</h2>
+               <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+                 The <span className="text-[#FDC017]">Success Editing Loop</span>
+               </h2>
                <p className="text-gray-600">How we ensure your application is nothing short of perfection.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200 rounded-[40px] overflow-hidden bg-white shadow-xl">
-               {[
-                 { step: "Review", desc: "Primary review for clarity and narrative flow." },
-                 { step: "Correction", desc: "Detailed grammatical and stylistic refinements." },
-                 { step: "Validation", desc: "Final verification against university criteria." }
-               ].map((item, i) => (
-                 <div key={i} className={`p-12 text-center ${i < 2 ? 'border-r border-gray-200' : ''}`}>
-                    <div className="text-[#FDC017] font-black text-6xl opacity-20 mb-4">{i + 1}</div>
-                    <h4 className="text-2xl font-bold text-[#031627] mb-4">{item.step}</h4>
-                    <p className="text-gray-600">{item.desc}</p>
-                 </div>
-               ))}
-            </div>
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-100 rounded-xl overflow-hidden bg-white shadow-xl">
+                {[
+                  { step: "Review", desc: "Primary review for clarity and narrative flow." },
+                  { step: "Correction", desc: "Detailed grammatical and stylistic refinements." },
+                  { step: "Validation", desc: "Final verification against university criteria." }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.15 }}
+                    whileHover={{ y: -4 }}
+                    className={`p-12 text-center bg-white hover:bg-[#031627] transition-all duration-500 group relative overflow-hidden flex flex-col items-center justify-center ${
+                      i < 2 ? 'border-b md:border-b-0 md:border-r border-gray-100 hover:border-transparent' : ''
+                    }`}
+                  >
+                     {/* Gold Bottom Highlight Line */}
+                     <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FDC017] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+
+                     {/* Step Number */}
+                     <div className="text-[#FDC017] font-black text-7xl opacity-20 mb-4 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                       {i + 1}
+                     </div>
+                     
+                     {/* Step Title */}
+                     <h4 className="text-2xl font-black text-[#031627] group-hover:text-white mb-4 transition-colors duration-500">
+                       {item.step}
+                     </h4>
+                     
+                     {/* Step Description */}
+                     <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-500 leading-relaxed max-w-xs">
+                       {item.desc}
+                     </p>
+                  </motion.div>
+                ))}
+             </div>
          </div>
       </section>
 
@@ -148,7 +212,7 @@ const EditingSubmission = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-[#031627] rounded-[3rem] p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
+            className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
           >
             {/* Subtle Brand Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
@@ -168,7 +232,7 @@ const EditingSubmission = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
+                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
               >
                 Schedule Final Review 
                 <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

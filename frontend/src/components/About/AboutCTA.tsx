@@ -4,50 +4,44 @@ import { FaChevronRight } from "react-icons/fa";
 
 const AboutCTA = () => {
   return (
-    <section className="py-8 container mx-auto px-6 relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-blue-100/20 rounded-full blur-[80px] pointer-events-none" />
-      
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="relative bg-[#fdfbf7] rounded-[2.5rem] p-8 md:p-12 text-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-[#FDC017]/10 max-w-3xl mx-auto"
-      >
-        <div className="relative z-10">
-          {/* Label */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-100 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FDC017] animate-pulse" />
-            <span className="text-[#031627] text-[9px] font-black uppercase tracking-[0.3em]">Start Journey</span>
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl max-w-5xl mx-auto"
+        >
+          {/* Subtle Brand Accent */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -ml-32 -mb-32" />
+
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <span className="inline-block px-4 py-1.5 bg-[#FDC017]/10 text-[#FDC017] text-[10px] font-bold uppercase tracking-widest rounded-full mb-6 border border-[#FDC017]/20">
+              Start Journey
+            </span>
+            
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">
+              Ready to Conquer <span className="text-[#FDC017]">The World?</span>
+            </h2>
+            
+            <p className="text-gray-400 text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+              Join <span className="text-white font-bold">5,000+ successful students</span> who found their future with ERFOLG.
+            </p>
+            
+            <Link to="/contact">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
+              >
+                Book Free Consultation
+                <FaChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
           </div>
-
-          {/* Heading */}
-          <h2 className="text-2xl md:text-4xl font-black mb-4 leading-tight tracking-tighter text-[#031627]">
-            Ready to Conquer <br />
-            <span className="text-[#FDC017] italic">The World?</span>
-          </h2>
-
-          {/* Description */}
-          <p className="text-sm md:text-base text-gray-500 mb-8 font-medium leading-relaxed max-w-md mx-auto">
-            Join <span className="text-[#031627] font-bold">5,000+ successful students</span> who found their future with ERFOLG.
-          </p>
-          
-          {/* Button */}
-          <Link to="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-[#FDC017] text-[#031627] px-8 py-3.5 rounded-xl font-black text-sm transition-all duration-500 shadow-lg flex items-center gap-3 mx-auto group"
-            >
-              Book Free Consultation 
-              <FaChevronRight className="text-[#031627]/40 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </Link>
-        </div>
-
-        {/* Floating background shapes for extra "premium" feel */}
-        <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-[#FDC017] opacity-20" />
-        <div className="absolute bottom-1/4 right-10 w-3 h-3 rounded-full bg-blue-600 opacity-10" />
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };

@@ -48,7 +48,7 @@ const InterviewVisa = () => {
       </section>
 
       {/* Mock Interview Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-20 items-center">
             <motion.div
@@ -57,24 +57,38 @@ const InterviewVisa = () => {
               viewport={{ once: true }}
               className="lg:w-1/2"
             >
-              <h2 className="text-4xl font-bold text-[#031627] mb-8 leading-tight">Expert Mock Interview Sessions</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-8 leading-tight tracking-tighter">
+                Expert <span className="text-[#FDC017]">Mock Interview</span> Sessions
+              </h2>
               <p className="text-lg text-gray-600 mb-10 leading-relaxed">
                 Many prestigious universities use interviews as a deciding factor. We provide one-on-one sessions that cover common questions, body language, and strategic communication.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                  {[
-                   { icon: <Video className="text-[#FDC017]" />, title: "Digital Prep", desc: "Simulated online interviews via Zoom/Teams." },
-                   { icon: <Mic className="text-[#FDC017]" />, title: "Tone Analysis", desc: "Guidance on speech speed and clarity." },
-                   { icon: <Users className="text-[#FDC017]" />, title: "Panel Practice", desc: "Mock rounds with multiple interviewers." },
-                   { icon: <CheckCircle className="text-[#FDC017]" />, title: "Feedback Loop", desc: "Detailed analysis after every session." }
+                   { icon: <Video className="w-5 h-5 text-[#FDC017]" />, title: "Digital Prep", desc: "Simulated online interviews via Zoom/Teams." },
+                   { icon: <Mic className="w-5 h-5 text-[#FDC017]" />, title: "Tone Analysis", desc: "Guidance on speech speed and clarity." },
+                   { icon: <Users className="w-5 h-5 text-[#FDC017]" />, title: "Panel Practice", desc: "Mock rounds with multiple interviewers." },
+                   { icon: <CheckCircle className="w-5 h-5 text-[#FDC017]" />, title: "Feedback Loop", desc: "Detailed analysis after every session." }
                  ].map((item, i) => (
-                   <div key={i} className="flex gap-4">
-                      <div className="shrink-0 mt-1">{item.icon}</div>
-                      <div>
-                         <h5 className="font-bold text-[#031627]">{item.title}</h5>
-                         <p className="text-sm text-gray-500">{item.desc}</p>
+                   <motion.div 
+                     key={i} 
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ duration: 0.5, delay: i * 0.1 }}
+                     whileHover={{ y: -4 }}
+                     className="p-5 rounded-xl bg-gray-50 border border-gray-100 hover:bg-white hover:border-[#FDC017]/35 hover:shadow-[0_12px_24px_rgba(253,192,23,0.06)] flex gap-4 transition-all duration-500 group"
+                   >
+                      <div className="shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:bg-[#FDC017]/10 transition-colors duration-300">
+                          {item.icon}
+                        </div>
                       </div>
-                   </div>
+                      <div>
+                         <h5 className="font-black text-base text-[#031627] mb-1 group-hover:text-[#FDC017] transition-colors duration-300">{item.title}</h5>
+                         <p className="text-xs text-gray-500 leading-relaxed font-medium">{item.desc}</p>
+                      </div>
+                   </motion.div>
                  ))}
               </div>
             </motion.div>
@@ -87,7 +101,7 @@ const InterviewVisa = () => {
                <img 
                  src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070&auto=format&fit=crop" 
                  alt="Collaboration" 
-                 className="rounded-[48px] shadow-2xl relative z-10" 
+                 className="rounded-xl shadow-2xl relative z-10" 
                />
                <div className="absolute -top-10 -right-10 w-64 h-64 bg-[#FDC017] rounded-full blur-[100px] opacity-30 -z-0" />
             </motion.div>
@@ -96,37 +110,72 @@ const InterviewVisa = () => {
       </section>
 
       {/* NEW SECTION: Visa Success System */}
-      <section className="py-24 bg-[#031627] text-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our <span className="text-[#FDC017]">Visa</span> Support Ecosystem</h2>
-             <p className="text-gray-400 max-w-2xl mx-auto text-lg">We maintain a 98% visa success rate through rigorous document verification and policy awareness.</p>
+      <section className="py-20 bg-gradient-to-b from-white via-[#FDC017]/3 to-white overflow-hidden relative border-t border-gray-50">
+        {/* Decorative backdrop elements */}
+        <div className="absolute top-1/2 left-1/4 w-80 h-80 bg-[#FDC017]/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+             <span className="inline-block px-3 py-1 bg-[#FDC017]/10 text-[#031627] text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 border border-[#FDC017]/20">
+               Secure Entry
+             </span>
+             <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+               Our <span className="text-[#FDC017]">Visa Support</span> Ecosystem
+             </h2>
+             <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+               We maintain a 98% visa success rate through rigorous document verification and policy awareness.
+             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: <FileCheck />, title: "Financial Audit", desc: "Expert review of bank statements and funding proof." },
-              { icon: <Landmark />, title: "Embassy Guidelines", desc: "Strict adherence to specific country visa regulations." },
-              { icon: <Clock />, title: "Slot Booking", desc: "Timely management of biometrics and interview slots." }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -10 }}
-                className="p-10 rounded-3xl bg-white/5 border border-white/10 hover:border-[#FDC017]/30 transition-all group"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-[#FDC017]/10 flex items-center justify-center text-[#FDC017] mb-8 group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+          <div className="relative">
+            {/* Stepped Timeline Connecting Line (only on large screens) */}
+            <div className="absolute top-[32px] left-[15%] right-[15%] h-[2px] border-t-2 border-dashed border-[#FDC017]/40 -z-0 hidden lg:block" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+              {[
+                { icon: <FileCheck className="w-8 h-8" />, title: "Financial Audit", desc: "Expert review of bank statements and funding proof." },
+                { icon: <Landmark className="w-8 h-8" />, title: "Embassy Guidelines", desc: "Strict adherence to specific country visa regulations." },
+                { icon: <Clock className="w-8 h-8" />, title: "Slot Booking", desc: "Timely management of biometrics and interview slots." }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.15 }}
+                  className="flex flex-col items-center text-center relative group"
+                >
+                  {/* Step Connector Node */}
+                  <div className="w-16 h-16 rounded-full bg-[#031627] text-[#FDC017] border-4 border-white flex items-center justify-center font-extrabold text-lg shadow-md mb-6 group-hover:bg-[#FDC017] group-hover:text-[#031627] group-hover:scale-110 transition-all duration-500 z-10">
+                    0{i + 1}
+                  </div>
+
+                  {/* Icon (Borderless Float) */}
+                  <div className="text-[#031627] group-hover:text-[#FDC017] group-hover:scale-125 transition-all duration-500 mb-4">
+                    {item.icon}
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-2xl font-black text-[#031627] mb-3 relative pb-3 group-hover:text-[#FDC017] transition-colors duration-300">
+                    {item.title}
+                    {/* Dynamic Gold Underline Indicator */}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-gray-200 group-hover:bg-[#FDC017] group-hover:w-16 transition-all duration-500" />
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-500 text-sm leading-relaxed max-w-xs font-medium">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 
       {/* NEW SECTION: Visa Timeline */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6">
            <div className="flex flex-col lg:flex-row gap-16 items-center">
               <div className="lg:w-1/2 order-2 lg:order-1">
@@ -155,11 +204,11 @@ const InterviewVisa = () => {
                  </div>
               </div>
               <div className="lg:w-1/2 order-1 lg:order-2">
-                 <h2 className="text-4xl font-bold text-[#031627] mb-8">The Visa Journey Timeline</h2>
+                 <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-8 leading-tight tracking-tighter">The <span className="text-[#FDC017]">Visa Journey</span> Timeline</h2>
                  <p className="text-lg text-gray-600 mb-10 leading-relaxed">
                     Every country has a different timeline. We provide you with a customized schedule to ensure you receive your visa well before your university intake begins.
                  </p>
-                 <div className="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-[#FDC017]">
+                 <div className="bg-white p-8 rounded-xl shadow-xl border-l-8 border-[#FDC017]">
                     <h5 className="font-bold text-[#031627] mb-4 text-xl">Did you know?</h5>
                     <p className="text-gray-600">Starting your visa process 3-4 months in advance significantly reduces the risk of last-minute delays and stress.</p>
                  </div>
@@ -175,7 +224,7 @@ const InterviewVisa = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-[#031627] rounded-[3rem] p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
+            className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
           >
             {/* Subtle Brand Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
@@ -196,7 +245,7 @@ const InterviewVisa = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-[#FDC017]/20 group"
+                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-[#FDC017]/20 group"
                 >
                   Join Coaching 
                   <Mic className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -205,7 +254,7 @@ const InterviewVisa = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
+                  className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
                 >
                   Contact Visa Expert
                 </motion.button>

@@ -10,7 +10,7 @@ const AdmissionCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative max-w-6xl mx-auto bg-[#031627] rounded-[3rem] p-10 lg:p-16 overflow-hidden shadow-2xl"
+          className="relative max-w-6xl mx-auto bg-[#031627] rounded-4xl p-10 lg:p-16 overflow-hidden shadow-2xl"
         >
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/10 rounded-full blur-[100px] -mr-32 -mt-32" />

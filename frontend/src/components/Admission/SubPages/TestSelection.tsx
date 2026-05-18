@@ -52,7 +52,9 @@ const TestSelection = () => {
       <section className="py-12">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#031627] mb-4">Specialized Test Coaching</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+              Specialized <span className="text-[#FDC017]">Test Coaching</span>
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">Our instructors bring years of expertise to help you achieve the scores required by the world's most prestigious institutions.</p>
           </div>
           
@@ -66,7 +68,7 @@ const TestSelection = () => {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.05 }}
-                className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all border-b-4 border-b-[#FDC017]"
+                className="p-8 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all border-b-4 border-b-[#FDC017]"
               >
                 <div className="flex justify-between items-start mb-6">
                    <Award className="w-10 h-10 text-[#FDC017]" />
@@ -99,7 +101,7 @@ const TestSelection = () => {
                      { icon: <Globe />, title: "Europe", sub: "Low tuition & cultural depth" },
                      { icon: <Star />, title: "Australia", sub: "High lifestyle & work opportunities" }
                    ].map((item, i) => (
-                     <div key={i} className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-[#FDC017]/30 transition-all">
+                     <div key={i} className="flex gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:border-[#FDC017]/30 transition-all">
                         <div className="text-[#FDC017]">{item.icon}</div>
                         <div>
                            <h5 className="font-bold">{item.title}</h5>
@@ -113,7 +115,7 @@ const TestSelection = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" 
                   alt="Students Collaborating" 
-                  className="rounded-[40px] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" 
+                  className="rounded-xl shadow-2xl" 
                 />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FDC017] rounded-full flex items-center justify-center -z-10 blur-3xl opacity-50" />
              </div>
@@ -122,10 +124,12 @@ const TestSelection = () => {
       </section>
 
       {/* NEW SECTION: Preparation Timeline */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6">
            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-[#031627] mb-4">Your Preparation Roadmap</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+                Your <span className="text-[#FDC017]">Preparation Roadmap</span>
+              </h2>
               <p className="text-gray-600">A typical timeline for test preparation and university selection.</p>
            </div>
            <div className="max-w-4xl mx-auto space-y-12 relative">
@@ -164,7 +168,7 @@ const TestSelection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-[#031627] rounded-[3rem] p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
+            className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
           >
             {/* Subtle Brand Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />

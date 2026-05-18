@@ -73,7 +73,7 @@ const AdmissionRequirements = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="md:col-span-3 lg:col-span-4 row-span-3 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative"
+            className="md:col-span-3 lg:col-span-4 row-span-3 bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative"
           >
             <div className="absolute top-0 right-0 p-8">
               <GraduationCap className="w-12 h-12 text-[#FDC017]/20 group-hover:scale-110 transition-transform duration-500" />
@@ -96,10 +96,10 @@ const AdmissionRequirements = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-3 lg:col-span-8 row-span-1 bg-[#031627] rounded-3xl p-8 flex items-center justify-between group overflow-hidden relative"
+            className="md:col-span-3 lg:col-span-8 row-span-1 bg-[#031627] rounded-xl p-8 flex items-center justify-between group overflow-hidden relative"
           >
             <div className="relative z-10 flex items-center gap-6">
-              <div className="w-14 h-14 rounded-2xl bg-[#FDC017]/10 flex items-center justify-center border border-[#FDC017]/20">
+              <div className="w-14 h-14 rounded-xl bg-[#FDC017]/10 flex items-center justify-center border border-[#FDC017]/20">
                 <AlertCircle className="w-7 h-7 text-[#FDC017] animate-pulse" />
               </div>
               <div>
@@ -118,7 +118,7 @@ const AdmissionRequirements = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-3 lg:col-span-5 row-span-2 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative"
+            className="md:col-span-3 lg:col-span-5 row-span-2 bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group overflow-hidden relative"
           >
             <div className="flex justify-between items-start mb-6">
               <h3 className="text-2xl font-black text-gray-900 leading-tight">Standardized <br/>Scores</h3>
@@ -139,7 +139,7 @@ const AdmissionRequirements = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-3 lg:col-span-3 row-span-2 bg-[#031627] rounded-3xl p-8 text-white group overflow-hidden relative shadow-lg"
+            className="md:col-span-3 lg:col-span-3 row-span-2 bg-[#031627] rounded-xl p-8 text-white group overflow-hidden relative shadow-lg"
           >
             <User className="w-8 h-8 mb-5 group-hover:rotate-12 transition-transform text-[#FDC017]" />
             <h3 className="text-xl font-bold mb-4 text-[#FDC017]">Identity</h3>

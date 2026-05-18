@@ -117,7 +117,7 @@ const AboutStory = () => {
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-[1.1/1]"
+              className="relative rounded-xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-[1.1/1]"
             >
               <img 
                 src={storyImg}

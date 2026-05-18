@@ -149,7 +149,7 @@ const AdmissionSteps = () => {
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
-                <div className="h-full w-full bg-white rounded-[3rem] border border-gray-100 shadow-[0_40px_80px_rgba(0,0,0,0.06)] p-8 md:p-12 flex flex-col justify-between group relative overflow-hidden">
+                <div className="h-full w-full bg-white rounded-3xl border border-gray-200 shadow-[0_40px_80px_rgba(0,0,0,0.06)] p-8 md:p-12 flex flex-col justify-between group relative overflow-hidden">
                   
                   {/* Decorative Number Watermark */}
                   <div 

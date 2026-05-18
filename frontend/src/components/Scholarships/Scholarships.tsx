@@ -93,7 +93,9 @@ const Scholarships = () => {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#031627] mb-4 tracking-tight">Curated Funding Opportunities</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+              Curated <span className="text-[#FDC017]">Funding Opportunities</span>
+            </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-lg">Our experts track thousands of live grants to find the perfect match for your profile.</p>
           </div>
 
@@ -105,13 +107,13 @@ const Scholarships = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white rounded-[2.5rem] p-10 border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
+                className="group relative bg-white rounded-xl p-10 border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
               >
                 {/* Decorative Pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#FDC017]/5 rounded-bl-[100px] group-hover:bg-[#FDC017]/10 transition-colors" />
                 
                 <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-start">
-                  <div className="w-20 h-20 rounded-3xl bg-gray-50 flex items-center justify-center text-[#FDC017] group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-500 shadow-sm shrink-0">
+                  <div className="w-20 h-20 rounded-xl bg-gray-50 flex items-center justify-center text-[#FDC017] group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-500 shadow-sm shrink-0">
                     {item.icon}
                   </div>
                   <div className="flex-1">
@@ -132,9 +134,9 @@ const Scholarships = () => {
       </section>
 
       {/* Strategic Tips Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
-           <div className="bg-[#031627] rounded-[4rem] p-12 lg:p-20 relative text-white">
+           <div className="bg-[#031627] rounded-2xl p-12 lg:p-20 relative text-white">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDC017]/10 rounded-full blur-[120px] -mr-48 -mt-48" />
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                  <div>
@@ -147,7 +149,7 @@ const Scholarships = () => {
                          { title: "Early Action", desc: "Most full-ride grants close 9-12 months before intake." },
                          { title: "Personal Branding", desc: "We help align your story with the donor's specific mission." }
                        ].map((tip, i) => (
-                         <div key={i} className="p-6 bg-white/5 rounded-3xl border border-white/10">
+                         <div key={i} className="p-6 bg-white/5 rounded-xl border border-white/10">
                             <h4 className="text-[#FDC017] font-bold mb-2 uppercase text-xs tracking-widest">{tip.title}</h4>
                             <p className="text-sm text-gray-400">{tip.desc}</p>
                          </div>
@@ -157,10 +159,10 @@ const Scholarships = () => {
                  <div className="relative">
                     <img 
                       src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" 
-                      className="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
+                      className="rounded-xl shadow-2xl hover:grayscale-0 transition-all duration-1000"
                       alt="Student Collaboration"
                     />
-                    <div className="absolute -bottom-6 -left-6 bg-[#FDC017] p-8 rounded-3xl text-[#031627] shadow-xl hidden sm:block">
+                    <div className="absolute -bottom-6 -left-6 bg-[#FDC017] p-8 rounded-xl text-[#031627] shadow-xl hidden sm:block">
                        <p className="text-4xl font-black">92%</p>
                        <p className="text-xs font-bold uppercase tracking-wider">Success Rate in 2024</p>
                     </div>
@@ -171,11 +173,13 @@ const Scholarships = () => {
       </section>
 
       {/* Scholarship FAQ Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6">
            <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
-                 <h2 className="text-4xl font-bold text-[#031627] mb-4 tracking-tight">Funding Intelligence</h2>
+                 <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+                   Funding <span className="text-[#FDC017]">Intelligence</span>
+                 </h2>
                  <p className="text-gray-500 text-lg">Common questions about securing international financial aid.</p>
               </div>
               <div className="space-y-4">
@@ -184,7 +188,7 @@ const Scholarships = () => {
                    { q: "Do I need a high IELTS score for scholarships?", a: "While not always mandatory for the scholarship itself, a high language score (7.5+) significantly strengthens your academic profile in the eyes of funding committees." },
                    { q: "Is work experience required for postgraduate grants?", a: "For MBA and specialized Master's grants (like Chevening), 2-3 years of impact-driven work experience is often a core requirement." }
                  ].map((faq, i) => (
-                   <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 hover:border-[#FDC017]/30 transition-all shadow-sm">
+                   <div key={i} className="bg-white p-8 rounded-xl border border-gray-100 hover:border-[#FDC017]/30 transition-all shadow-sm">
                       <h4 className="text-xl font-bold text-[#031627] mb-3 flex items-center gap-3">
                          <div className="w-2 h-2 rounded-full bg-[#FDC017]" />
                          {faq.q}
@@ -204,7 +208,7 @@ const Scholarships = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-[#031627] rounded-[3rem] p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
+            className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
           >
             {/* Subtle Brand Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
@@ -224,7 +228,7 @@ const Scholarships = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
+                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
               >
                 Get Free Assessment
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -1,8 +1,18 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { UserCheck, Compass, Target, MessageSquare, ShieldCheck, Heart, Lightbulb, Zap } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
 const ProfilingCounselling = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
@@ -103,7 +113,7 @@ const ProfilingCounselling = () => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="relative rounded-[40px] overflow-hidden shadow-2xl border-8 border-gray-50">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-gray-50">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}
@@ -119,7 +129,7 @@ const ProfilingCounselling = () => {
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -bottom-10 -left-10 bg-[#FDC017] p-8 rounded-3xl hidden md:block shadow-2xl max-w-xs z-10"
+                className="absolute -bottom-10 -left-10 bg-[#FDC017] p-8 rounded-xl hidden md:block shadow-2xl max-w-xs z-10"
               >
                 <div className="absolute -top-6 -right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                   <MessageSquare className="w-6 h-6 text-[#031627]" />
@@ -133,62 +143,98 @@ const ProfilingCounselling = () => {
       </section>
 
       {/* NEW SECTION: Why Choose Our Counselling */}
-      <section className="py-16 bg-gradient-to-b from-white via-[#FDC017]/3 to-white overflow-hidden relative">
-        {/* Decorative backdrop elements */}
-        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-[#FDC017]/5 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block px-3 py-1 bg-[#FDC017]/10 text-[#031627] text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 border border-[#FDC017]/20">
-                Why Erfolg
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-[#031627] mb-3 tracking-tight">
-                Why Our <span className="text-[#FDC017]">Counselling</span> Works
-              </h2>
-              <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-                We combine years of experience with a student-centric approach to deliver results that transform lives.
-              </p>
-            </motion.div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: <ShieldCheck className="w-6 h-6" />, title: "Verified Success", desc: "98% of our students receive offers from their top 3 choices." },
-              { icon: <Heart className="w-6 h-6" />, title: "Empathetic Approach", desc: "We understand the stress of applications and provide emotional support." },
-              { icon: <Lightbulb className="w-6 h-6" />, title: "Innovative Strategy", desc: "Using data-driven insights to predict university selection trends." },
-              { icon: <Zap className="w-6 h-6" />, title: "Fast Tracking", desc: "Streamlined processes to ensure early bird application benefits." }
-            ].map((item, i) => (
+      <section className="py-16 bg-white overflow-hidden relative">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+            
+            {/* Left Column: Sticky Title Information */}
+            <div className="lg:w-5/12 lg:sticky lg:top-24 lg:h-fit">
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(253, 192, 23, 0.08)" }}
-                className="relative p-6 rounded-[2rem] bg-white border border-gray-100 hover:border-[#FDC017]/45 transition-all duration-500 group overflow-hidden"
+                transition={{ duration: 0.6 }}
               >
-                {/* Gold Top Gilded Line */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#FDC017] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-
-                <div className="w-12 h-12 rounded-xl bg-[#031627] text-[#FDC017] flex items-center justify-center mb-5 shadow-md shadow-[#031627]/10 group-hover:bg-[#FDC017] group-hover:text-[#031627] group-hover:scale-110 transition-all duration-500">
-                  {item.icon}
-                </div>
-                
-                <h3 className="text-lg font-black text-[#031627] mb-2 tracking-tight group-hover:text-[#FDC017] transition-colors duration-300">
-                  {item.title}
-                </h3>
-                
-                <p className="text-xs text-gray-500 leading-relaxed font-medium">
-                  {item.desc}
+                <span className="inline-block px-3 py-1 bg-[#FDC017]/10 text-[#031627] text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 border border-[#FDC017]/20">
+                  Why Erfolg
+                </span>
+                <h2 className="text-3xl lg:text-5xl font-black text-[#031627] mb-6 tracking-tight leading-tight">
+                  Why Our <br className="hidden lg:block" />
+                  <span className="text-[#FDC017]">Counselling</span> Works
+                </h2>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-md">
+                  We combine years of experience with a student-centric approach to deliver results that transform lives.
                 </p>
               </motion.div>
-            ))}
+            </div>
+
+            {/* Right Column: Sleek Editorial List (No Cards) */}
+            <div className="lg:w-7/12 flex flex-col gap-2">
+              {[
+                { 
+                  num: "01", 
+                  title: "Verified Success", 
+                  desc: "98% of our students receive offers from their top 3 choices.",
+                  icon: <ShieldCheck className="w-5 h-5 text-[#FDC017]" />
+                },
+                { 
+                  num: "02", 
+                  title: "Empathetic Approach", 
+                  desc: "We understand the stress of applications and provide emotional support.",
+                  icon: <Heart className="w-5 h-5 text-[#FDC017]" />
+                },
+                { 
+                  num: "03", 
+                  title: "Innovative Strategy", 
+                  desc: "Using data-driven insights to predict university selection trends.",
+                  icon: <Lightbulb className="w-5 h-5 text-[#FDC017]" />
+                },
+                { 
+                  num: "04", 
+                  title: "Fast Tracking", 
+                  desc: "Streamlined processes to ensure early bird application benefits.",
+                  icon: <Zap className="w-5 h-5 text-[#FDC017]" /> 
+                }
+              ].map((item, i) => {
+                const isActive = activeIndex === i;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    onMouseEnter={() => setActiveIndex(i)}
+                    className={`py-6 flex gap-6 items-start transition-all duration-500 ${
+                      isActive ? "pl-4 border-l-2 border-[#FDC017]" : "pl-0 border-l-2 border-transparent"
+                    }`}
+                  >
+                    {/* Huge Number Accent */}
+                    <span className={`text-3xl lg:text-4xl font-black transition-colors duration-500 shrink-0 leading-none ${
+                      isActive ? "text-[#FDC017]" : "text-gray-200"
+                    }`}>
+                      {item.num}
+                    </span>
+
+                    {/* Text Details */}
+                    <div className="flex-1">
+                      <h3 className={`text-xl font-bold mb-2 transition-colors duration-500 flex items-center gap-2 ${
+                        isActive ? "text-[#FDC017]" : "text-[#031627]"
+                      }`}>
+                        <span className="shrink-0">{item.icon}</span>
+                        {item.title}
+                      </h3>
+                      <p className={`text-sm transition-colors duration-500 leading-relaxed ${
+                        isActive ? "text-gray-700 font-medium" : "text-gray-400"
+                      }`}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
           </div>
         </div>
       </section>
@@ -248,9 +294,9 @@ const ProfilingCounselling = () => {
                   transition={{ delay: i * 0.1 }}
                   className="group"
                 >
-                  <div className="relative bg-white border border-gray-100 p-8 rounded-[2rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full">
+                  <div className="relative bg-white border border-gray-100 p-8 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full">
                     {/* Number Badge */}
-                    <div className="w-14 h-14 bg-[#031627] text-[#FDC017] rounded-2xl flex items-center justify-center text-xl font-black mb-8 shadow-lg group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-300">
+                    <div className="w-14 h-14 bg-[#031627] text-[#FDC017] rounded-xl flex items-center justify-center text-xl font-black mb-8 shadow-lg group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-300">
                       {item.step}
                     </div>
 
@@ -283,7 +329,7 @@ const ProfilingCounselling = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-[#031627] rounded-[3rem] p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
+            className="bg-[#031627] rounded-3xl p-12 lg:p-16 relative overflow-hidden text-center shadow-2xl"
           >
             {/* Subtle Brand Accent */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FDC017]/5 rounded-full blur-[80px] -mr-32 -mt-32" />

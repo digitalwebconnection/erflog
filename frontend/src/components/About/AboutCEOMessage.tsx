@@ -8,7 +8,7 @@ const AboutCEOMessage = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="relative flex flex-col lg:flex-row items-stretch rounded-[2.5rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] bg-[#031627]"
+          className="relative flex flex-col lg:flex-row items-stretch rounded-xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] bg-[#031627]"
         >
           <div className="w-full lg:w-[30%] min-h-[260px] lg:min-h-[380px] relative overflow-hidden">
             <motion.img
@@ -29,7 +29,7 @@ const AboutCEOMessage = () => {
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <div className="w-12 h-1.5 bg-[#FDC017] mb-5 rounded-full" />
+              <div className="w-12 h-1.5 bg-[#FDC017] mb-5 rounded-xl" />
               <blockquote className="text-xl md:text-3xl font-light italic text-white leading-tight mb-5 tracking-tight">
                 "Education is the most powerful tool to change the world. At <span className="text-[#FDC017] font-black">ERFOLG</span>, we don't just build careers; we sculpt destinies for a brighter tomorrow."
               </blockquote>

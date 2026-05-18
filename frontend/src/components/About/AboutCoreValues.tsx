@@ -83,12 +83,12 @@ const AboutCoreValues = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -15 }}
-              className="bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-gray-100 transition-all duration-500 group relative overflow-hidden"
+              className="bg-white p-10 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-gray-100 transition-all duration-500 group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FDC017]/5 rounded-bl-[100px] transition-transform duration-500 group-hover:scale-150 group-hover:bg-[#FDC017]/10" />
               
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-[1.5rem] bg-[#031627] text-[#FDC017] text-3xl flex items-center justify-center mb-8 group-hover:-translate-y-2 group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-500 shadow-xl group-hover:shadow-[#FDC017]/40">
+                <div className="w-20 h-20 rounded-xl bg-[#031627] text-[#FDC017] text-3xl flex items-center justify-center mb-8 group-hover:-translate-y-2 group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-500 shadow-xl group-hover:shadow-[#FDC017]/40">
                   {value.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-[#031627] tracking-tight">{value.title}</h3>
