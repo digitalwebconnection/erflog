@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Award, Globe, ArrowRight, DollarSign, Target } from "lucide-react";
+import { SplitText } from "../About/Shared";
+import { Link } from "react-router-dom";
+import { FaChevronRight } from "react-icons/fa";
 
 const Scholarships = () => {
   const scholarshipTypes = [
@@ -32,7 +35,7 @@ const Scholarships = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
-      <section className="relative h-[90vh] py-20 flex items-center bg-[#031627] text-white overflow-hidden">
+      <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -45,21 +48,41 @@ const Scholarships = () => {
 
         <div className="container mx-auto px-6 relative z-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl text-center lg:text-left mx-auto lg:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1 bg-[#FDC017] text-[#031627] font-bold text-xs uppercase tracking-widest rounded-full mb-6 shadow-lg shadow-[#FDC017]/20">
-              Financial Empowerment
-            </span>
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
-              Elite Funding & <br />
-              <span className="text-[#FDC017]">Scholarship</span> Mastery
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+              <SplitText text="Elite Funding &" className="block mb-1" />
+              <span className="text-[#FDC017] relative">
+                <SplitText text="Scholarship Mastery" />
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="text-lg md:text-xl text-gray-200 leading-relaxed font-medium max-w-2xl mx-auto mb-10"
+            >
               We decode the complexities of global financial aid, helping you secure the funding needed to attend the world's most prestigious institutions without the burden of debt.
-            </p>
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.4, duration: 0.5 }}
+            >
+              <Link to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(253, 192, 23, 0.4)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-[#FDC017] text-[#031627] px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-3 mx-auto transition-all"
+                >
+                  Start Your Journey <FaChevronRight className="text-sm" />
+                </motion.button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

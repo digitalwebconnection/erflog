@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Mic, Video, Users, CheckCircle, FileCheck, Landmark, Clock } from "lucide-react";
+import { SplitText } from "../../About/Shared";
 
 const InterviewVisa = () => {
   return (
-      <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
-      <section className="relative h-[90vh] py-20 flex items-center bg-[#031627] text-white overflow-hidden">
+      <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -13,26 +14,35 @@ const InterviewVisa = () => {
             alt="Global Academic Connectivity" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black/65 z-10" />
+          <div className="absolute inset-0 bg-[#031627]/60 z-10" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center lg:text-left lg:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1 bg-[#FDC017] text-[#031627] font-bold text-xs uppercase tracking-widest rounded-full mb-6">
+            <span className="inline-block px-4 py-1.5 bg-[#FDC017]/10 text-[#FDC017] text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-[#FDC017]/20">
               Final Milestone
             </span>
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
-              Master the Final <span className="text-[#FDC017]">Hurdle</span> <br />
-              with Confidence
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+              <SplitText text="Master the Final " className="inline" />
+              <span className="text-[#FDC017] relative">
+                <SplitText text="Hurdle" />
+              </span>
+              <br />
+              <SplitText text="with Confidence" className="inline" />
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="text-lg md:text-xl text-gray-200 leading-relaxed font-medium max-w-2xl mx-auto"
+            >
               Our specialized interview coaching and expert visa guidance ensure that your dream of studying abroad becomes a reality.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>

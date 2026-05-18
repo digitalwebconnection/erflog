@@ -57,7 +57,7 @@ const AdmissionOverview = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative h-full min-h-[400px] rounded-[2.5rem] overflow-hidden group shadow-2xl"
+              className="relative h-full min-h-[400px] rounded-[0.5rem] overflow-hidden group shadow-2xl"
             >
               <img 
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" 
@@ -67,7 +67,7 @@ const AdmissionOverview = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#031627]/60 via-transparent to-transparent" />
               
               {/* Overlay Stat Badge */}
-              <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl">
+              <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl">
                  <div className="text-[#031627] font-black text-3xl leading-none mb-1">98%</div>
                  <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Success Rate</div>
               </div>
@@ -84,7 +84,7 @@ const AdmissionOverview = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="group p-8 rounded-[2rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-[#FDC017]/30 hover:shadow-xl transition-all duration-500 flex flex-col"
+                  className="group p-8 rounded-[0.8rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-[#FDC017]/30 hover:shadow-xl transition-all duration-500 flex flex-col"
                 >
                   <div className="w-12 h-12 rounded-xl bg-white text-[#031627] flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#FDC017] group-hover:text-white transition-all duration-300">
                     {feature.icon}

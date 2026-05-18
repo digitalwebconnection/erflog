@@ -72,7 +72,7 @@ const AdmissionScholarships = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="h-full bg-gray-50 rounded-xl p-10 border border-gray-100 hover:bg-white hover:shadow-2xl hover:border-[#FDC017]/30 transition-all duration-500 overflow-hidden relative">
+              <div className="h-full bg-gray-100 rounded-xl p-10 border border-black/20 shadow-xl hover:bg-white hover:shadow-2xl hover:border-[#FDC017]/30 transition-all duration-500 overflow-hidden relative">
                 {/* Decorative Pattern Background */}
                
 

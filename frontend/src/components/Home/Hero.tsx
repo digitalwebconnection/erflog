@@ -104,18 +104,7 @@ const Hero = () => {
           <button className="w-full sm:w-auto px-10 py-4 bg-white/5 backdrop-blur-xl border border-white/15 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 active:scale-95">
             Book Free Consultation
           </button>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute left-1/2 -bottom-20 md:-bottom-32 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
-        >
-          <span className="text-white text-[10px] font-bold uppercase tracking-[0.3em] rotate-90 mb-8">Scroll</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-white to-transparent"></div>
-        </motion.div>
+        </motion.div>  
       </div>
     </section>
   );

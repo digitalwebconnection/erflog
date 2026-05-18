@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { UserCheck, Compass, Target, MessageSquare, ShieldCheck, Heart, Lightbulb, Zap } from "lucide-react";
+import { SplitText } from "../../About/Shared";
 
 const ProfilingCounselling = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
-      <section className="relative h-[90vh] py-20 flex items-center bg-[#031627] text-white overflow-hidden">
+      <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -13,32 +14,41 @@ const ProfilingCounselling = () => {
             alt="Professional Mentorship" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-[#031627]/60 z-10" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl text-center lg:text-left mx-auto lg:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1 bg-[#FDC017] text-[#031627] font-bold text-xs uppercase tracking-widest rounded-full mb-6">
+            <span className="inline-block px-4 py-1.5 bg-[#FDC017]/10 text-[#FDC017] text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-[#FDC017]/20">
               Expert Mentorship
             </span>
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
-              Unlocking Your <span className="text-[#FDC017]">Potential</span> <br />
-              Through Expert Profiling
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+              <SplitText text="Unlocking Your " className="inline" />
+              <span className="text-[#FDC017] relative">
+                <SplitText text="Potential" />
+              </span>
+              <br />
+              <SplitText text="Through Expert Profiling" className="inline" />
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="text-lg md:text-xl text-gray-200 leading-relaxed font-medium max-w-2xl mx-auto"
+            >
               Our professional counselors use advanced behavioral analysis and academic assessment to craft a unique profile that stands out to top-tier global universities.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Main Content - Core Services */}
-      <section className="py-24">
+      <section className="py-18">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.div
@@ -123,32 +133,60 @@ const ProfilingCounselling = () => {
       </section>
 
       {/* NEW SECTION: Why Choose Our Counselling */}
-      <section className="py-24 bg-[#031627] text-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Why Our <span className="text-[#FDC017]">Counselling</span> Works</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              We combine years of experience with a student-centric approach to deliver results that transform lives.
-            </p>
+      <section className="py-16 bg-gradient-to-b from-white via-[#FDC017]/3 to-white overflow-hidden relative">
+        {/* Decorative backdrop elements */}
+        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-[#FDC017]/5 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-3 py-1 bg-[#FDC017]/10 text-[#031627] text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 border border-[#FDC017]/20">
+                Why Erfolg
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-black text-[#031627] mb-3 tracking-tight">
+                Why Our <span className="text-[#FDC017]">Counselling</span> Works
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+                We combine years of experience with a student-centric approach to deliver results that transform lives.
+              </p>
+            </motion.div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: <ShieldCheck />, title: "Verified Success", desc: "98% of our students receive offers from their top 3 choices." },
-              { icon: <Heart />, title: "Empathetic Approach", desc: "We understand the stress of applications and provide emotional support." },
-              { icon: <Lightbulb />, title: "Innovative Strategy", desc: "Using data-driven insights to predict university selection trends." },
-              { icon: <Zap />, title: "Fast Tracking", desc: "Streamlined processes to ensure early bird application benefits." }
+              { icon: <ShieldCheck className="w-6 h-6" />, title: "Verified Success", desc: "98% of our students receive offers from their top 3 choices." },
+              { icon: <Heart className="w-6 h-6" />, title: "Empathetic Approach", desc: "We understand the stress of applications and provide emotional support." },
+              { icon: <Lightbulb className="w-6 h-6" />, title: "Innovative Strategy", desc: "Using data-driven insights to predict university selection trends." },
+              { icon: <Zap className="w-6 h-6" />, title: "Fast Tracking", desc: "Streamlined processes to ensure early bird application benefits." }
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#FDC017]/30 transition-all group"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(253, 192, 23, 0.08)" }}
+                className="relative p-6 rounded-[2rem] bg-white border border-gray-100 hover:border-[#FDC017]/45 transition-all duration-500 group overflow-hidden"
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#FDC017]/10 flex items-center justify-center text-[#FDC017] mb-6 group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all">
+                {/* Gold Top Gilded Line */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#FDC017] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                <div className="w-12 h-12 rounded-xl bg-[#031627] text-[#FDC017] flex items-center justify-center mb-5 shadow-md shadow-[#031627]/10 group-hover:bg-[#FDC017] group-hover:text-[#031627] group-hover:scale-110 transition-all duration-500">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                
+                <h3 className="text-lg font-black text-[#031627] mb-2 tracking-tight group-hover:text-[#FDC017] transition-colors duration-300">
+                  {item.title}
+                </h3>
+                
+                <p className="text-xs text-gray-500 leading-relaxed font-medium">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -156,7 +194,7 @@ const ProfilingCounselling = () => {
       </section>
 
       {/* Success Journey Roadmap */}
-      <section className="py-24 lg:py-32 bg-white overflow-hidden">
+      <section className="py-12 lg:py-8 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <motion.div
