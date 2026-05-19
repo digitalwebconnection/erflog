@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ArrowRight, ShieldCheck, Globe2 } from "lucide-react";
+import { FaChevronRight } from "react-icons/fa";
+import { SplitText } from "../About/Shared";
 
 export interface HeroProps {
   data: {
@@ -18,7 +19,7 @@ export interface HeroProps {
 const Hero = ({ data }: HeroProps) => {
   const [currentBg, setCurrentBg] = useState(0);
   const navigate = useNavigate();
-  const images = data.backgroundImages || [];
+  const images = data.backgroundImages || (data.image ? [data.image] : []);
 
   useEffect(() => {
     if (!images.length) return;
@@ -28,119 +29,133 @@ const Hero = ({ data }: HeroProps) => {
     return () => clearInterval(interval);
   }, [images]);
 
+  // Safely split title to style "Study in" and the country name separately
+  let prefix = "";
+  let suffix = "";
+  
+  const titleLower = data.title.toLowerCase();
+  if (titleLower.startsWith("study in the ")) {
+    prefix = data.title.substring(0, 12); // "Study in the"
+    suffix = data.title.substring(13);    // "United Kingdom"
+  } else if (titleLower.startsWith("study in ")) {
+    prefix = data.title.substring(0, 8);  // "Study in"
+    suffix = data.title.substring(9);     // "Canada"
+  } else {
+    const words = data.title.split(' ');
+    const splitIndex = words.length > 2 ? 2 : words.length;
+    prefix = words.slice(0, splitIndex).join(' ');
+    suffix = words.slice(splitIndex).join(' ');
+  }
+
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#020c16]">
-      {/* Background with subtle zoom/parallax */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
+    <section className="relative h-[90vh] overflow-hidden flex items-center justify-center text-center bg-[#031627]">
+      {/* Background with subtle zoom slider */}
+      <div className="absolute inset-0 z-0 bg-[#031627]">
+        <AnimatePresence>
           <motion.div
             key={currentBg}
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            transition={{ duration: 2, ease: "easeInOut" }}
             className="absolute inset-0"
             style={{
-              backgroundImage: `url(${images[currentBg] || data.image})`,
+              backgroundImage: `url(${images[currentBg]})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-[#020c16]/75" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020c16]/50 to-[#020c16]" />
+            <div className="absolute inset-0 bg-[#031627]/60" />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-32">
-        <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full flex flex-col items-center"
-          >
-            {/* Elegant Badge */}
+      <div className="relative z-10 container mx-auto px-6 text-white flex flex-col items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full max-w-5xl flex flex-col items-center"
+        >
+          {data.subtitle && (
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 text-[#FDC017] mb-8 shadow-xl"
+              className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-4"
             >
-              <Globe2 size={16} />
-              <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em]">{data.subtitle}</span>
+              <span className="text-xs md:text-sm font-bold uppercase tracking-widest">{data.subtitle}</span>
             </motion.div>
+          )}
 
-            {/* Main Title - Perfectly Balanced Size */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[1.1] mb-8 tracking-tighter max-w-5xl mx-auto">
-              {data.title.split(' ').map((word, i, arr) => (
-                <span key={i} className="inline-block whitespace-nowrap">
-                  {word.toLowerCase() === "study" ? (
-                    <span className="text-white/60 font-medium">{word}</span>
-                  ) : i >= arr.length - 2 ? (
-                     <span className="text-[#FDC017] drop-shadow-[0_0_20px_rgba(253,192,23,0.2)]">{word}</span>
-                  ) : (
-                    word
-                  )}
-                  &nbsp;
-                </span>
-              ))}
-            </h1>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight tracking-tighter">
+            <SplitText text={prefix} className="block mb-1" />
+            {suffix && (
+              <span className="text-[#FDC017] relative">
+                <SplitText text={suffix} />
+              </span>
+            )}
+          </h1>
 
-            {/* Balanced Description */}
-            <p className="text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto font-normal opacity-90">
-              {data.description}
-            </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="text-lg md:text-xl max-w-3xl mx-auto text-gray-200 font-medium leading-relaxed mb-8"
+          >
+            {data.description}
+          </motion.p>
 
-            {/* Arranged Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full sm:w-auto group relative px-12 py-5 bg-[#FDC017] text-[#031627] font-black rounded-2xl shadow-[0_20px_40px_-10px_rgba(253,192,23,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                <span className="flex items-center justify-center gap-3">
-                  {data.ctaText}
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-
-              <button
-                onClick={() => navigate("/admission")}
-                className="w-full sm:w-auto px-12 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 active:scale-95"
-              >
-                {data.ctaText2 || "Explore Programs"}
-              </button>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mx-auto"
+          >
+            <motion.button
+              onClick={() => navigate("/contact")}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(253, 192, 23, 0.4)" }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-[#FDC017] text-[#031627] px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto"
+            >
+              {data.ctaText || "Book Free Consultation"} <FaChevronRight className="text-sm" />
+            </motion.button>
+            
+            {/* Added secondary CTA for exploring programs */}
+            <motion.button
+              onClick={() => navigate("/admission")}
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,1)", color: "#031627" }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto"
+            >
+              {data.ctaText2 || "Explore Programs"}
+            </motion.button>
+          </motion.div>
+          
+          {/* Minimal Trust Line aligned with the clean About style */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 1 }}
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-16 pt-6 border-t border-white/20 w-full max-w-2xl mx-auto"
+          >
+            <div className="flex items-center gap-4 text-center sm:text-left">
+              <div>
+                <span className="block text-[#FDC017] text-3xl font-black leading-none mb-1">95%</span>
+                <span className="text-gray-300 text-xs uppercase font-bold tracking-widest">Visa Success Rate</span>
+              </div>
             </div>
-
-            {/* Minimal Trust Line */}
-            <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-16 pt-12 border-t border-white/10 w-full max-w-4xl">
-               <div className="flex items-center justify-center sm:justify-end gap-4">
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
-                    <ShieldCheck size={24} className="text-[#FDC017]" />
-                  </div>
-                  <div className="text-left">
-                    <span className="block text-white text-lg font-black leading-none">95%</span>
-                    <span className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Visa Success Rate</span>
-                  </div>
-               </div>
-               <div className="flex items-center justify-center sm:justify-start gap-4">
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
-                    <Star size={24} className="text-[#FDC017]" />
-                  </div>
-                  <div className="text-left">
-                    <span className="block text-white text-lg font-black leading-none">500+</span>
-                    <span className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Global Partners</span>
-                  </div>
-               </div>
+            <div className="hidden sm:block w-px h-8 bg-white/20" />
+            <div className="flex items-center gap-4 text-center sm:text-left">
+              <div>
+                <span className="block text-[#FDC017] text-3xl font-black leading-none mb-1">500+</span>
+                <span className="text-gray-300 text-xs uppercase font-bold tracking-widest">Global Partners</span>
+              </div>
             </div>
           </motion.div>
-        </div>
+          
+        </motion.div>
       </div>
-
-      {/* Subtle corner gradients */}
-      <div className="absolute top-0 left-0 w-[40vw] h-[40vw] bg-primary/10 blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] bg-[#FDC017]/5 blur-[120px] translate-x-1/2 translate-y-1/2" />
     </section>
   );
 };

@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Award, GraduationCap, ChevronRight, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { BookOpen, GraduationCap, Building2, CheckCircle2, Award } from "lucide-react";
 
 interface SectionItem {
   title: string;
@@ -16,118 +15,150 @@ interface SectionProps {
   };
 }
 
+const icons = [BookOpen, GraduationCap, Building2];
+
 const EducationSection = ({ data }: SectionProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Safely split title to highlight the country name
+  let prefix = data.title;
+  let suffix = "";
+  
+  const titleLower = data.title.toLowerCase();
+  if (titleLower.startsWith("education system in the ")) {
+    prefix = data.title.substring(0, 24); // "Education System in the "
+    suffix = data.title.substring(24);    // "United Kingdom"
+  } else if (titleLower.startsWith("education system in ")) {
+    prefix = data.title.substring(0, 20);  // "Education System in "
+    suffix = data.title.substring(20);     // "Canada"
+  }
 
   return (
-    <section className="py-24 bg-[#031627] relative overflow-hidden">
-      {/* Background patterns */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(253,192,23,0.1),transparent_70%)]" />
-      </div>
+    <section className="py-12 bg-white relative overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#FDC017]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#031627]/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          
-          {/* Left Column: Navigation & Summary */}
-          <div className="lg:col-span-5">
+        
+        {/* Properly Different Asymmetric Header */}
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-20 relative">
+          <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="mb-12"
+              className="flex items-center gap-3 text-[#031627] font-bold uppercase tracking-[0.3em] text-xs mb-6"
             >
-              <div className="flex items-center gap-3 text-[#FDC017] font-bold uppercase tracking-[0.3em] text-[10px] mb-4">
-                <div className="w-10 h-[1px] bg-[#FDC017]" />
-                Academic Excellence
-              </div>
-              <h2 className="text-5xl font-black text-white leading-[1.1] mb-6 tracking-tighter">
-                {data.title}
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                {data.intro}
-              </p>
+              <div className="w-12 h-[2px] bg-[#FDC017]" />
+              Academic Excellence
             </motion.div>
-
-            {/* Interactive Timeline/Menu */}
-            <div className="space-y-3">
-              {data.sections.map((item, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  className={`w-full group flex items-center justify-between p-5 rounded-2xl transition-all duration-500 border ${
-                    activeIndex === i 
-                      ? "bg-[#FDC017] border-[#FDC017] text-[#031627] shadow-[0_20px_40px_-10px_rgba(253,192,23,0.3)]" 
-                      : "bg-white/5 border-white/5 text-white/60 hover:border-white/20"
-                  }`}
-                >
-                  <div className="flex items-center gap-5">
-                    <span className={`text-xs font-black transition-colors ${activeIndex === i ? "text-[#031627]/40" : "text-white/20"}`}>
-                      0{i + 1}
-                    </span>
-                    <span className="font-bold tracking-tight">{item.title}</span>
-                  </div>
-                  <ChevronRight size={18} className={`transition-transform duration-500 ${activeIndex === i ? "translate-x-1" : "opacity-0 group-hover:opacity-100 group-hover:translate-x-0"}`} />
-                </button>
-              ))}
-            </div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-[#031627] leading-[1.1] tracking-tighter"
+            >
+              {prefix}
+              {suffix && <span className="text-[#FDC017] block md:inline">{suffix}</span>}
+            </motion.h2>
           </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-md relative p-6 bg-[#031627] text-white rounded-3xl shadow-xl flex items-center lg:mt-6 shrink-0"
+          >
+            {/* Elegant small quote mark decoration */}
+            <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-[#FDC017] flex items-center justify-center text-[#031627] font-serif font-black text-xl shadow-lg">
+              “
+            </div>
+            <div 
+              className="text-gray-200 text-sm md:text-base leading-relaxed font-semibold italic"
+              dangerouslySetInnerHTML={{ __html: data.intro || "" }}
+            />
+          </motion.div>
+        </div>
 
-          {/* Right Column: Dynamic Content Panel */}
-          <div className="lg:col-span-7">
-            <AnimatePresence mode="wait">
+        {/* Dynamic Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+          {data.sections.map((item, i) => {
+            const Icon = icons[i % icons.length];
+            const num = String(i + 1).padStart(2, '0');
+            return (
               <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.02 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-12 md:p-16 relative shadow-2xl"
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="group relative bg-white rounded-3xl p-8 shadow-[0_10px_40px_rgba(3,22,39,0.03)] border border-gray-100 hover:shadow-[0_20px_60px_rgba(253,192,23,0.12)] hover:border-[#FDC017]/40 hover:-translate-y-1.5 transition-all duration-500 overflow-hidden flex flex-col h-full cursor-default"
               >
-                 <div className="absolute top-10 right-10 opacity-5 text-white">
-                  <GraduationCap size={150} />
+                {/* Floating Big Index Number */}
+                <div className="absolute top-4 right-6 text-7xl font-black text-gray-100/60 group-hover:text-[#FDC017]/10 transition-colors duration-500 select-none">
+                  {num}
                 </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-[#FDC017]/10 flex items-center justify-center text-[#FDC017]">
-                      <BookOpen size={24} />
-                    </div>
-                    <div className="h-[1px] grow bg-white/10" />
+                <div className="relative z-10 flex-1 flex flex-col">
+                  {/* Icon Container */}
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#031627] group-hover:bg-[#031627] group-hover:text-[#FDC017] group-hover:scale-110 transition-all duration-500 shadow-sm mb-6">
+                    <Icon size={24} />
                   </div>
 
-                  <h3 className="text-4xl font-black text-white mb-8 tracking-tighter">
-                    {data.sections[activeIndex]?.title}
+                  <h3 className="text-xl font-black text-[#031627] mb-3 tracking-tight group-hover:text-[#FDC017] transition-colors duration-300">
+                    {item.title}
                   </h3>
 
                   <div 
-                    className="text-gray-300 text-lg leading-relaxed mb-10 prose prose-invert max-w-none"
-                    dangerouslySetInnerHTML={{ __html: data.sections[activeIndex]?.content }}
+                    className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow"
+                    dangerouslySetInnerHTML={{ __html: item.content }}
                   />
 
-                  {/* Feature Checklist */}
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                    {data.highlights.map((h, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <CheckCircle2 size={16} className="text-[#FDC017]" />
-                        <span className="text-sm font-bold text-white/80 tracking-tight">{h}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Summary Badge */}
-                  <div className="mt-12 inline-flex items-center gap-3 px-6 py-3 bg-[#FDC017]/5 rounded-2xl border border-[#FDC017]/10">
-                    <Award className="text-[#FDC017]" size={20} />
-                    <span className="text-[#FDC017] text-xs font-black uppercase tracking-widest">Ranked Worldwide</span>
-                  </div>
+                  {/* Decorative Line */}
+                  <div className="w-12 h-[3px] bg-[#FDC017]/30 group-hover:w-full group-hover:bg-[#FDC017] transition-all duration-500 mt-auto" />
                 </div>
               </motion.div>
-            </AnimatePresence>
-          </div>
+            );
+          })}
         </div>
+
+        {/* Highlights Bento Row */}
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.4 }}
+           className="bg-[#031627] rounded-[2rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
+        >
+          {/* Subtle gold glow inside navy box */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(253,192,23,0.15),transparent_70%)] pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div className="flex items-center gap-4 lg:w-1/3">
+              <div className="w-16 h-16 rounded-2xl bg-[#FDC017] flex items-center justify-center text-[#031627] flex-shrink-0">
+                <Award size={32} />
+              </div>
+              <div>
+                <h4 className="text-[#FDC017] text-xs font-bold uppercase tracking-widest mb-1">Globally Recognized</h4>
+                <p className="text-white text-xl font-black tracking-tight">Key Advantages</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:w-2/3 w-full">
+              {data.highlights.map((h, i) => (
+                <div key={i} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-[#FDC017]/30 hover:shadow-[0_0_20px_rgba(253,192,23,0.1)] transition-all duration-300 group cursor-default">
+                  <CheckCircle2 size={20} className="text-[#FDC017] group-hover:scale-110 transition-transform" />
+                  <span className="text-sm font-bold text-white/90 tracking-tight group-hover:text-white transition-colors">{h}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
-export default EducationSection;
+export default EducationSection;

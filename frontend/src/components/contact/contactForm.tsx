@@ -46,7 +46,7 @@ const ErfolgForm = () => {
   };
 
   return (
-    <div className="py-20 px-6 bg-white">
+    <div className="py-12 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
 
         {/* 🔥 SECTION HEADING */}

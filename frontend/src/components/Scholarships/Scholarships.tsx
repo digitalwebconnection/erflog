@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Award, Globe, ArrowRight, DollarSign, Target } from "lucide-react";
-import { SplitText } from "../About/Shared";
+import { Award, Globe, ArrowRight, DollarSign, Target, ChevronDown } from "lucide-react";
+import { SplitText, Counter } from "../About/Shared";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 
 const Scholarships = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleIndex = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   const scholarshipTypes = [
     {
       title: "Merit-Based Awards",
@@ -90,7 +97,7 @@ const Scholarships = () => {
 
 
       {/* Scholarship Grid */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
@@ -122,9 +129,6 @@ const Scholarships = () => {
                       <span className="px-3 py-1 bg-gray-100 text-[#031627] font-bold text-[10px] uppercase tracking-widest rounded-lg">{item.amount}</span>
                     </div>
                     <p className="text-gray-500 leading-relaxed text-base">{item.desc}</p>
-                    <div className="mt-6 flex items-center gap-2 text-[#FDC017] font-bold text-sm cursor-pointer group/link">
-                      Learn More <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -139,64 +143,221 @@ const Scholarships = () => {
            <div className="bg-[#031627] rounded-2xl p-12 lg:p-20 relative text-white">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDC017]/10 rounded-full blur-[120px] -mr-48 -mt-48" />
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                 <div>
-                    <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">Mastering the <br /><span className="text-[#FDC017]">Scholarship Game</span></h2>
-                    <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+                 <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                 >
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+                       Mastering the <br />
+                       <span className="text-[#FDC017] relative inline-block">
+                          Scholarship Game
+                          <motion.div 
+                             initial={{ width: 0 }}
+                             whileInView={{ width: "100%" }}
+                             viewport={{ once: true }}
+                             transition={{ delay: 0.6, duration: 0.8 }}
+                             className="absolute bottom-1 left-0 h-[3px] bg-[#FDC017]/30"
+                          />
+                       </span>
+                    </h2>
+                    <motion.p 
+                       initial={{ opacity: 0 }}
+                       whileInView={{ opacity: 1 }}
+                       viewport={{ once: true }}
+                       transition={{ delay: 0.3, duration: 0.6 }}
+                       className="text-gray-400 text-lg mb-10 leading-relaxed"
+                    >
                        Scholarships are highly competitive. Beyond grades, committees look for specific leadership traits and community impact. Our strategists help you reveal these qualities.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    </motion.p>
+                    <motion.div 
+                       className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                       initial="hidden"
+                       whileInView="visible"
+                       viewport={{ once: true }}
+                       variants={{
+                          hidden: { opacity: 0 },
+                          visible: {
+                             opacity: 1,
+                             transition: {
+                                staggerChildren: 0.15,
+                                delayChildren: 0.4
+                             }
+                          }
+                       }}
+                    >
                        {[
                          { title: "Early Action", desc: "Most full-ride grants close 9-12 months before intake." },
                          { title: "Personal Branding", desc: "We help align your story with the donor's specific mission." }
                        ].map((tip, i) => (
-                         <div key={i} className="p-6 bg-white/5 rounded-xl border border-white/10">
-                            <h4 className="text-[#FDC017] font-bold mb-2 uppercase text-xs tracking-widest">{tip.title}</h4>
-                            <p className="text-sm text-gray-400">{tip.desc}</p>
-                         </div>
+                         <motion.div 
+                           key={i} 
+                           variants={{
+                              hidden: { y: 20, opacity: 0 },
+                              visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+                           }}
+                           whileHover={{ 
+                              y: -8, 
+                              scale: 1.02, 
+                              borderColor: "rgba(253, 192, 23, 0.4)",
+                              backgroundColor: "rgba(255, 255, 255, 0.08)",
+                              boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+                           }}
+                           className="p-6 bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group cursor-default"
+                         >
+                            <motion.h4 
+                               whileHover={{ x: 3 }}
+                               className="text-[#FDC017] font-bold mb-2 uppercase text-xs tracking-widest flex items-center gap-1.5"
+                            >
+                               <span className="w-1.5 h-1.5 rounded-full bg-[#FDC017] inline-block group-hover:scale-150 transition-transform" />
+                               {tip.title}
+                            </motion.h4>
+                            <p className="text-sm text-gray-400 leading-relaxed">{tip.desc}</p>
+                         </motion.div>
                        ))}
+                    </motion.div>
+                 </motion.div>
+                 <motion.div 
+                    initial={{ opacity: 0, scale: 0.95, x: 30 }}
+                    whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative group/img"
+                 >
+                    {/* Glow element behind image on hover */}
+                    <div className="absolute inset-0 bg-[#FDC017]/10 rounded-xl blur-xl opacity-0 group-hover/img:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    
+                    <div className="overflow-hidden rounded-xl shadow-2xl">
+                       <motion.img 
+                         src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" 
+                         whileHover={{ scale: 1.05 }}
+                         transition={{ duration: 0.6 }}
+                         className="rounded-xl object-cover w-full h-full transition-all duration-700 filter brightness-95 group-hover/img:brightness-100"
+                         alt="Student Collaboration"
+                       />
                     </div>
-                 </div>
-                 <div className="relative">
-                    <img 
-                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" 
-                      className="rounded-xl shadow-2xl hover:grayscale-0 transition-all duration-1000"
-                      alt="Student Collaboration"
-                    />
-                    <div className="absolute -bottom-6 -left-6 bg-[#FDC017] p-8 rounded-xl text-[#031627] shadow-xl hidden sm:block">
-                       <p className="text-4xl font-black">92%</p>
-                       <p className="text-xs font-bold uppercase tracking-wider">Success Rate in 2024</p>
-                    </div>
-                 </div>
+
+                    <motion.div 
+                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                       whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                       viewport={{ once: true }}
+                       transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+                       className="absolute -bottom-6 -left-6 bg-[#FDC017] p-8 rounded-xl text-[#031627] shadow-2xl hidden sm:block cursor-default"
+                    >
+                       <motion.div
+                          animate={{ y: [0, -8, 0] }}
+                          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                       >
+                          <p className="text-5xl font-black mb-1">
+                            <Counter value="92%" />
+                          </p>
+                          <p className="text-xs font-bold uppercase tracking-wider opacity-90">Success Rate in 2024</p>
+                       </motion.div>
+                    </motion.div>
+                 </motion.div>
               </div>
            </div>
         </div>
       </section>
 
       {/* Scholarship FAQ Section */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-20 bg-gray-50/50">
         <div className="container mx-auto px-6">
            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
+              <motion.div 
+                 initial={{ opacity: 0, y: -20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.6 }}
+                 className="text-center mb-16"
+              >
                  <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
-                   Funding <span className="text-[#FDC017]">Intelligence</span>
+                   Funding <span className="text-[#FDC017] relative inline-block">
+                     Intelligence
+                     <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                        className="absolute bottom-1 left-0 h-[3px] bg-[#FDC017]/30"
+                     />
+                   </span>
                  </h2>
-                 <p className="text-gray-500 text-lg">Common questions about securing international financial aid.</p>
-              </div>
-              <div className="space-y-4">
+                 <p className="text-gray-500 text-lg max-w-xl mx-auto">Common questions about securing international financial aid.</p>
+              </motion.div>
+
+              <motion.div 
+                 className="space-y-5"
+                 initial="hidden"
+                 whileInView="visible"
+                 viewport={{ once: true }}
+                 variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                       opacity: 1,
+                       transition: {
+                          staggerChildren: 0.12,
+                          delayChildren: 0.2
+                       }
+                    }
+                 }}
+              >
                  {[
                    { q: "Can I get a 100% scholarship for undergraduate studies?", a: "Yes, especially in the US and UK. Ivy League schools offer need-blind admissions, while UK universities offer specific vice-chancellor merit awards that cover full tuition." },
                    { q: "Do I need a high IELTS score for scholarships?", a: "While not always mandatory for the scholarship itself, a high language score (7.5+) significantly strengthens your academic profile in the eyes of funding committees." },
                    { q: "Is work experience required for postgraduate grants?", a: "For MBA and specialized Master's grants (like Chevening), 2-3 years of impact-driven work experience is often a core requirement." }
-                 ].map((faq, i) => (
-                   <div key={i} className="bg-white p-8 rounded-xl border border-gray-100 hover:border-[#FDC017]/30 transition-all shadow-sm">
-                      <h4 className="text-xl font-bold text-[#031627] mb-3 flex items-center gap-3">
-                         <div className="w-2 h-2 rounded-full bg-[#FDC017]" />
-                         {faq.q}
-                      </h4>
-                      <p className="text-gray-500 leading-relaxed pl-5">{faq.a}</p>
-                   </div>
-                 ))}
-              </div>
+                 ].map((faq, i) => {
+                    const isOpen = openIndex === i;
+                    return (
+                      <motion.div
+                        key={i}
+                        variants={{
+                           hidden: { y: 20, opacity: 0 },
+                           visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+                        }}
+                        whileHover={{ 
+                           y: -4, 
+                           scale: 1.005,
+                           boxShadow: "0 15px 30px rgba(3, 22, 39, 0.05)"
+                        }}
+                        className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer select-none ${
+                          isOpen 
+                            ? "border-[#FDC017] shadow-md shadow-[#FDC017]/5" 
+                            : "border-gray-100 hover:border-gray-300 hover:shadow-sm"
+                        }`}
+                        onClick={() => toggleIndex(i)}
+                      >
+                         <div className="p-8 flex items-center justify-between gap-4">
+                            <h4 className="text-lg md:text-xl font-bold text-[#031627] flex items-center gap-3">
+                               <span className={`w-2.5 h-2.5 rounded-full transition-all duration-300 shrink-0 ${isOpen ? "bg-[#FDC017] scale-125" : "bg-gray-300"}`} />
+                               {faq.q}
+                            </h4>
+                            <motion.div
+                               animate={{ rotate: isOpen ? 180 : 0 }}
+                               transition={{ duration: 0.3, ease: "easeInOut" }}
+                               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isOpen ? "bg-[#FDC017] text-[#031627]" : "bg-gray-100 text-gray-500"}`}
+                            >
+                               <ChevronDown className="w-4 h-4" />
+                            </motion.div>
+                         </div>
+                         <motion.div
+                            initial={false}
+                            animate={{ 
+                               height: isOpen ? "auto" : 0,
+                               opacity: isOpen ? 1 : 0
+                            }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                         >
+                            <p className="text-gray-500 leading-relaxed pb-8 px-8 pl-[3.25rem] border-t border-gray-50 pt-5 text-base md:text-lg">
+                               {faq.a}
+                            </p>
+                         </motion.div>
+                      </motion.div>
+                    );
+                 })}
+              </motion.div>
            </div>
         </div>
       </section>
