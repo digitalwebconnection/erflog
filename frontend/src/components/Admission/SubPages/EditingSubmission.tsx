@@ -48,32 +48,57 @@ const EditingSubmission = () => {
       </section>
 
       {/* Editing Services Grid */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-             <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
-               Our <span className="text-[#FDC017]">Editorial Expertise</span>
-             </h2>
-             <p className="text-gray-500 max-w-2xl mx-auto text-lg">We provide multi-layered review processes to ensure your application is beyond reproach.</p>
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-30 z-0 pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+             <motion.div
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.7 }}
+             >
+               <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+                 Our <span className="text-[#FDC017]">Editorial Expertise</span>
+               </h2>
+               <p className="text-gray-500 max-w-2xl mx-auto text-lg">We provide multi-layered review processes to ensure your application is beyond reproach.</p>
+             </motion.div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <Edit3 />, title: "SOP Enhancement", desc: "Turning your draft into a powerful statement of purpose." },
-              { icon: <FileText />, title: "LOR Strategy", desc: "Ensuring recommendations highlight your specific traits." },
-              { icon: <ClipboardCheck />, title: "CV Optimization", desc: "Tailoring your professional history for academic success." },
-              { icon: <ShieldCheck />, title: "Plagiarism Check", desc: "Rigorous verification to ensure 100% original content." }
+              { icon: <Edit3 className="w-8 h-8" />, title: "SOP Enhancement", desc: "Turning your draft into a powerful statement of purpose." },
+              { icon: <FileText className="w-8 h-8" />, title: "LOR Strategy", desc: "Ensuring recommendations highlight your specific traits." },
+              { icon: <ClipboardCheck className="w-8 h-8" />, title: "CV Optimization", desc: "Tailoring your professional history for academic success." },
+              { icon: <ShieldCheck className="w-8 h-8" />, title: "Plagiarism Check", desc: "Rigorous verification to ensure 100% original content." }
             ].map((service, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
-                className="p-10 rounded-xl bg-gray-50 border border-gray-100 hover:bg-[#031627] hover:text-white transition-all duration-500 group"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                whileHover={{ y: -15, scale: 1.02 }}
+                className="p-10 rounded-3xl bg-white border border-gray-100 hover:border-[#FDC017]/30 hover:shadow-2xl hover:shadow-[#FDC017]/10 transition-all duration-500 group relative overflow-hidden flex flex-col items-center text-center z-10"
               >
-                <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-[#FDC017] mb-8 shadow-sm group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all">
+                {/* Background Hover Element */}
+                <div className="absolute inset-0 bg-[#031627] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0" />
+                
+                {/* Glow Effect */}
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#FDC017]/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+
+                <div className="relative z-10 w-20 h-20 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-[#031627] mb-8 shadow-sm group-hover:bg-[#FDC017] group-hover:text-[#031627] group-hover:border-[#FDC017] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-600 group-hover:text-gray-400 transition-colors">{service.desc}</p>
+                
+                <h3 className="relative z-10 text-2xl font-black text-[#031627] mb-4 group-hover:text-white transition-colors duration-500">{service.title}</h3>
+                
+                <p className="relative z-10 text-gray-500 leading-relaxed group-hover:text-gray-300 transition-colors duration-500">{service.desc}</p>
+                
+                {/* Bottom decorative bar */}
+                <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#FDC017] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               </motion.div>
             ))}
           </div>

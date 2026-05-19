@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 
 const destinations = [
-  { label: "United Kingdom", short: "UK", flag: "🇬🇧", students: "12k+", unis: "85+",  color: "#3b82f6" },
-  { label: "United States",  short: "USA", flag: "🇺🇸", students: "18k+", unis: "120+", color: "#ef4444" },
-  { label: "Canada",         short: "CA",  flag: "🇨🇦", students: "9k+",  unis: "60+",  color: "#f97316" },
-  { label: "Australia",      short: "AU",  flag: "🇦🇺", students: "11k+", unis: "45+",  color: "#10b981" },
-  { label: "Germany",        short: "DE",  flag: "🇩🇪", students: "5k+",  unis: "38+",  color: "#FDC017" },
-  { label: "Singapore",      short: "SG",  flag: "🇸🇬", students: "3k+",  unis: "22+",  color: "#a855f7" },
-  { label: "Europe",         short: "EU",  flag: "🇪🇺", students: "7k+",  unis: "90+",  color: "#06b6d4" },
+  { label: "United Kingdom", short: "UK", students: "12k+", unis: "85+",  color: "#3b82f6", flag: "🇬🇧" },
+  { label: "United States",  short: "USA", students: "18k+", unis: "120+", color: "#ef4444", flag: "🇺🇸" },
+  { label: "Canada",         short: "CA", students: "9k+",  unis: "60+",  color: "#f97316", flag: "🇨🇦" },
+  { label: "Australia",      short: "AU",  students: "11k+", unis: "45+",  color: "#10b981", flag: "🇦🇺" },
+  { label: "Germany",        short: "DE",  students: "5k+",  unis: "38+",  color: "#FDC017", flag: "🇩🇪" },
+  { label: "Singapore",      short: "SG",  students: "3k+",  unis: "22+",  color: "#a855f7", flag: "🇸🇬" },
+  { label: "Europe",         short: "EU",  students: "7k+",  unis: "90+",  color: "#06b6d4", flag: "🇪🇺" },
 ];
 
 const stats = [
@@ -31,7 +31,7 @@ const AboutPartners = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className="w-6 h-[1px] bg-[#FDC017]" />
+                <span className="w-6 h-px bg-[#FDC017]" />
                 <span className="text-[#FDC017] text-[9px] font-black uppercase tracking-[0.4em]">Our Impact</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter leading-none mb-4">
@@ -56,14 +56,14 @@ const AboutPartners = () => {
           <div className="w-full md:w-1/2 relative">
              <div className="flex flex-col gap-4">
                 {/* First Row - Right to Left */}
-                <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+                <div className="flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
                   <motion.div 
                     animate={{ x: [0, -1000] }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     className="flex gap-4 pr-4 whitespace-nowrap"
                   >
                     {[...destinations, ...destinations].map((d, i) => (
-                      <div key={i} className="px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center gap-3">
+                      <div key={i} className="px-6 py-4 rounded-2xl bg-white/3 border border-white/5 flex items-center gap-3">
                         <span className="text-2xl">{d.flag}</span>
                         <span className="text-white font-bold text-sm">{d.label}</span>
                         <span className="text-[#FDC017] font-black text-[10px] bg-[#FDC017]/10 px-2 py-0.5 rounded-full">{d.short}</span>
@@ -73,7 +73,7 @@ const AboutPartners = () => {
                 </div>
 
                 {/* Second Row - Left to Right */}
-                <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+                <div className="flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
                   <motion.div 
                     animate={{ x: [-1000, 0] }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}

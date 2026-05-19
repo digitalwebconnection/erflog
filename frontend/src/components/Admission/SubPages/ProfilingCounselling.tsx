@@ -1,10 +1,20 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { UserCheck, Compass, Target, MessageSquare, ShieldCheck, Heart, Lightbulb, Zap } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
 const ProfilingCounselling = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // A helper function to track mouse hover for premium spotlight glow
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { currentTarget, clientX, clientY } = e;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    const x = clientX - left;
+    const y = clientY - top;
+    currentTarget.style.setProperty("--x", `${x}px`);
+    currentTarget.style.setProperty("--y", `${y}px`);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -94,7 +104,7 @@ const ProfilingCounselling = () => {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.15 }}
                     whileHover={{ scale: 1.02, x: 10 }}
-                    className="flex gap-5 p-5 rounded-2xl hover:bg-white hover:shadow-xl border border-transparent hover:border-gray-100 transition-all duration-300 group cursor-pointer"
+                    className="flex gap-5 p-5 rounded-2xl hover:bg-white hover:shadow-xl border border-transparent hover:border-gray-100 transition-all duration-300 group"
                   >
                     <div className="w-14 h-14 rounded-2xl bg-[#031627] flex items-center justify-center shrink-0 shadow-lg group-hover:bg-[#FDC017] group-hover:scale-110 transition-all duration-300">
                       {item.icon}
@@ -256,10 +266,21 @@ const ProfilingCounselling = () => {
           </div>
 
           <div className="relative max-w-7xl mx-auto">
-            {/* Unique Desktop Connector Line */}
-            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-100 -translate-y-1/2 hidden lg:block" />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.12
+                  }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+            >
               {[
                 { 
                   step: "01", 
@@ -288,28 +309,45 @@ const ProfilingCounselling = () => {
               ].map((item, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group"
+                  variants={{
+                    hidden: { opacity: 0, y: 35 },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0,
+                      transition: { type: "spring", stiffness: 85, damping: 14 }
+                    }
+                  }}
+                  whileHover={{ y: -10, scale: 1.015 }}
+                  onMouseMove={handleMouseMove}
+                  className="group relative h-full"
                 >
-                  <div className="relative bg-white border border-gray-100 p-8 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full">
-                    {/* Number Badge */}
-                    <div className="w-14 h-14 bg-[#031627] text-[#FDC017] rounded-xl flex items-center justify-center text-xl font-black mb-8 shadow-lg group-hover:bg-[#FDC017] group-hover:text-[#031627] transition-all duration-300">
-                      {item.step}
+                  <div className="h-full bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 relative z-10 flex flex-col justify-between overflow-hidden">
+                    
+                    {/* Spotlight Glow Effect */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
+                      style={{
+                        background: "radial-gradient(280px circle at var(--x, 50%) var(--y, 50%), rgba(253, 192, 23, 0.08), transparent 80%)"
+                      }}
+                    />
+
+                    <div>
+                      {/* Step Number Badge */}
+                      <div className="w-14 h-14 bg-[#031627] text-[#FDC017] rounded-xl flex items-center justify-center text-xl font-black mb-8 shadow-lg group-hover:bg-[#FDC017] group-hover:text-[#031627] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative shrink-0 z-10">
+                        {item.step}
+                      </div>
+
+                      <h4 className="text-xl font-bold text-[#031627] mb-4 tracking-tight group-hover:text-[#FDC017] transition-colors duration-300">
+                        {item.label}
+                      </h4>
+                      
+                      <p className="text-gray-500 text-sm leading-relaxed mb-6 group-hover:text-gray-600 transition-colors">
+                        {item.sub}
+                      </p>
                     </div>
 
-                    <h4 className="text-xl font-bold text-[#031627] mb-4 tracking-tight group-hover:text-[#FDC017] transition-colors">
-                      {item.label}
-                    </h4>
-                    
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      {item.sub}
-                    </p>
-
-                    {/* Decorative Background Icon */}
-                    <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity text-[#031627]">
+                    {/* Decorative Background Icon Watermark */}
+                    <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-[0.14] group-hover:scale-[3.3] group-hover:rotate-[24deg] group-hover:text-[#FDC017] transition-all duration-700 pointer-events-none text-[#031627]">
                       <div className="scale-[3] rotate-12">
                         {item.icon}
                       </div>
@@ -317,7 +355,7 @@ const ProfilingCounselling = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
