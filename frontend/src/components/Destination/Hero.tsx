@@ -116,7 +116,7 @@ const Hero = ({ data }: HeroProps) => {
               onClick={() => navigate("/contact")}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(253, 192, 23, 0.4)" }}
               whileTap={{ scale: 0.98 }}
-              className="bg-[#FDC017] text-[#031627] px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto"
+              className="bg-[#FDC017] text-[#031627] px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto cursor-pointer"
             >
               {data.ctaText || "Book Free Consultation"} <FaChevronRight className="text-sm" />
             </motion.button>
@@ -126,7 +126,7 @@ const Hero = ({ data }: HeroProps) => {
               onClick={() => navigate("/admission")}
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,1)", color: "#031627" }}
               whileTap={{ scale: 0.98 }}
-              className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto"
+              className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-3.5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto cursor-pointer"
             >
               {data.ctaText2 || "Explore Programs"}
             </motion.button>

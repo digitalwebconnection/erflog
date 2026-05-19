@@ -32,7 +32,7 @@ const jointDegrees = [
 
 const Courses = () => {
   return (
-    <section className="py-24 bg-bg-alt px-6" id="courses">
+    <section className="py-12 bg-bg-alt px-6" id="courses">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div

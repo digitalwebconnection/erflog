@@ -68,7 +68,7 @@ const EducationSection = ({ data }: SectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="max-w-md relative p-6 bg-[#031627] text-white rounded-3xl shadow-xl flex items-center lg:mt-6 shrink-0"
+            className="w-full lg:max-w-md lg:w-auto relative p-6 bg-[#031627] text-white rounded-3xl shadow-xl flex items-center lg:mt-6 shrink-0"
           >
             {/* Elegant small quote mark decoration */}
             <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-[#FDC017] flex items-center justify-center text-[#031627] font-serif font-black text-xl shadow-lg">

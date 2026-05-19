@@ -49,7 +49,7 @@ const disciplines = [
 
 const Disciplines = () => {
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white px-6">
+    <section className="py-12 bg-gradient-to-b from-gray-50 to-white px-6">
       <div className="max-w-6xl mx-auto text-center">
 
         {/* Heading */}
@@ -66,7 +66,7 @@ const Disciplines = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-5xl font-bold mt-3 mb-10 text-primary"
         >
-          Specialized in Study Abroad
+          Specialized in <span className="text-[#FDC017]">Study Abroad</span>
         </motion.h2>
 
         {/* Cards */}

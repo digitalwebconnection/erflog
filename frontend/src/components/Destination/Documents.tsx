@@ -45,7 +45,7 @@ const Documents = ({ data }: ListSectionProps) => {
             Required
           </span>
           {parts[1]}
-          <span className="relative inline-block px-4 py-1.5 bg-[#031627] text-white rounded-2xl transform rotate-2 shadow-xl mx-1 text-2xl md:text-3xl lg:text-4xl font-black whitespace-nowrap">
+          <span className="relative inline-block px-4 py-1.5 bg-[#031627] text-white rounded-2xl transform rotate-2 shadow-xl mx-1 text-2xl md:text-3xl lg:text-4xl font-black">
             {suff}
           </span>
         </span>
@@ -117,8 +117,8 @@ const Documents = ({ data }: ListSectionProps) => {
           </motion.div>
         </div>
 
-        {/* Clean, scalable 4-Column Grid for large lists of image cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Responsive Layout: Single Horizontal Scrolling Row on Mobile, Grid on Desktop */}
+        <div className="flex sm:grid flex-row sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-visible pb-6 sm:pb-0 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {data.list.map((item, index) => (
             <motion.div
               key={index}
@@ -126,7 +126,7 @@ const Documents = ({ data }: ListSectionProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group relative overflow-hidden rounded-[2rem] aspect-[4/5] shadow-[0_10px_30px_rgba(3,22,39,0.08)] hover:shadow-[0_20px_50px_rgba(253,192,23,0.2)] border border-gray-100 hover:border-[#FDC017]/30 transition-all duration-700 cursor-default"
+              className="group relative overflow-hidden rounded-[2rem] aspect-[4/5] shadow-[0_10px_30px_rgba(3,22,39,0.08)] hover:shadow-[0_20px_50px_rgba(253,192,23,0.2)] border border-gray-100 hover:border-[#FDC017]/30 transition-all duration-700 cursor-default w-[260px] sm:w-auto shrink-0 snap-start"
             >
               <img
                 src={item.image}
