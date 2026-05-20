@@ -84,7 +84,7 @@ const Scholarships = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(253, 192, 23, 0.4)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-[#FDC017] text-[#031627] px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-3 mx-auto transition-all"
+                  className="bg-[#FDC017] text-[#031627] px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-3 mx-auto transition-all cursor-pointer"
                 >
                   Start Your Journey <FaChevronRight className="text-sm" />
                 </motion.button>
@@ -262,7 +262,7 @@ const Scholarships = () => {
       </section>
 
       {/* Scholarship FAQ Section */}
-      <section className="py-20 bg-gray-50/50">
+      <section className="py-12 bg-gray-50/50">
         <div className="container mx-auto px-6">
            <div className="max-w-4xl mx-auto">
               <motion.div 
@@ -363,7 +363,7 @@ const Scholarships = () => {
       </section>
 
       {/* Perfect CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -389,7 +389,7 @@ const Scholarships = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group"
+                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group cursor-pointer"
               >
                 Get Free Assessment
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -155,7 +155,7 @@ const Courses = () => {
 
               <a 
                 href="#contact" 
-                className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white font-bold rounded-2xl hover:bg-black transition-all shadow-xl hover:shadow-primary/20 group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-[#FDC017] text-primary font-black rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_15px_30px_-5px_rgba(253,192,23,0.4)] group"
               >
                 Contact us to know More
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@ const Courses = () => {
             </div>
             
             <div className="relative">
-              <div className="absolute -inset-4 border-2 border-dashed border-[#FDC017]/30 rounded-[3rem] animate-[spin_30s_linear_infinite]"></div>
+              <div className="absolute -inset-4 border-2 border-dashed border-[#FDC017]/30 rounded-[3rem]"></div>
               
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl group">
                 <img 

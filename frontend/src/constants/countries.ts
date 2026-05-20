@@ -24,7 +24,7 @@ export const countries = [
     _id: "static-ireland",
     name: "Ireland",
     code: "ireland",
-    image: "https://images.unsplash.com/photo-1564198879220-63f2734f7cec?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "Study in the 'Emerald Isle', a global hub for technology and pharmaceuticals. Experience top-tier education amidst stunning landscapes and a vibrant, welcoming culture."
   },
   {

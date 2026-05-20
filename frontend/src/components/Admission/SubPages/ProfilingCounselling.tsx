@@ -30,11 +30,11 @@ const ProfilingCounselling = () => {
         {/* Full-Width Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1653566031587-74f7d86a2e71?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fEV4cGVydCUyME1lbnRvcnNoaXB8ZW58MHx8MHx8fDA%3D" 
             alt="Professional Mentorship" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-[#031627]/60 z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">

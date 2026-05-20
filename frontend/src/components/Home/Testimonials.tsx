@@ -221,7 +221,7 @@ export default function ReviewsSection() {
               }
               className="p-4 bg-zinc-900/80 border border-zinc-800 text-white
               hover:bg-zinc-800 hover:shadow-[0_0_15px_rgba(255,0,0,0.35)]
-              transition-all duration-300"
+              transition-all duration-300 cursor-pointer"
             >
               <ChevronLeft size={20} />
             </button>
@@ -233,7 +233,7 @@ export default function ReviewsSection() {
               }
               className="p-4 bg-zinc-900/80 border border-zinc-800 text-white
               hover:bg-zinc-800 hover:shadow-[0_0_15px_rgba(255,0,0,0.35)]
-              transition-all duration-300"
+              transition-all duration-300 cursor-pointer"
             >
               <ChevronRight size={20} />
             </button>

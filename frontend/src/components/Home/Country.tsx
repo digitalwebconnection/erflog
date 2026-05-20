@@ -24,7 +24,7 @@ const CountrySection = () => {
   useEffect(() => {
     if (isMobile) return;
     if (countries.length <= visibleCards) return;
-    
+
     const interval = setInterval(() => {
       setStartIndex((prev) => (prev + 1) % countries.length);
     }, 4000);
@@ -36,11 +36,11 @@ const CountrySection = () => {
   const displayedCountries = isMobile
     ? countries
     : Array.from({ length: Math.min(visibleCards, countries.length) }, (_, i) =>
-        countries[(startIndex + i) % countries.length]
-      );
+      countries[(startIndex + i) % countries.length]
+    );
 
   return (
-    <section className="py-12 bg-white overflow-hidden">
+    <section id="destinations" className="py-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-center text-brandYellow font-semibold tracking-widest text-2xl">

@@ -245,7 +245,7 @@ const InterviewVisa = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-[#FDC017]/20 group"
+                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-[#FDC017]/20 group cursor-pointer"
                 >
                   Join Coaching 
                   <Mic className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -254,7 +254,7 @@ const InterviewVisa = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
+                  className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center cursor-pointer"
                 >
                   Contact Visa Expert
                 </motion.button>

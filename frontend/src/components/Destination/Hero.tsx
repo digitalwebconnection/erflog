@@ -65,7 +65,7 @@ const Hero = ({ data }: HeroProps) => {
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-[#031627]/60" />
+            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -160,4 +160,4 @@ const Hero = ({ data }: HeroProps) => {
   );
 };
 
-export default Hero;
+export default Hero;

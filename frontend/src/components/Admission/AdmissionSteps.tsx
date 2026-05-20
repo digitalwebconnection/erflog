@@ -122,14 +122,14 @@ const AdmissionSteps = () => {
               <div className="flex items-center gap-6">
                 <button 
                   onClick={prevStep}
-                  className="w-16 h-16 rounded-full border border-gray-100 flex items-center justify-center hover:bg-[#031627] hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl group"
+                  className="w-16 h-16 rounded-full border border-gray-100 flex items-center justify-center hover:bg-[#031627] hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl group cursor-pointer"
                 >
                   <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
                 </button>
                 <div className="w-[1px] h-10 bg-gray-100" />
                 <button 
                   onClick={nextStep}
-                  className="flex items-center gap-4 bg-[#031627] text-white px-8 py-5 rounded-full font-bold hover:bg-[#FDC017] hover:text-[#031627] transition-all duration-500 shadow-2xl shadow-[#031627]/20 group"
+                  className="flex items-center gap-4 bg-[#031627] text-white px-8 py-5 rounded-full font-bold hover:bg-[#FDC017] hover:text-[#031627] transition-all duration-500 shadow-2xl shadow-[#031627]/20 group cursor-pointer"
                 >
                   Next Phase
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

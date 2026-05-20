@@ -21,6 +21,15 @@
   -webkit-font-smoothing: antialiased;
 }
 
+button,
+[role="button"],
+a,
+select,
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
+}
+
 html,
 body {
   scroll-behavior: auto !important;

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const ErfolgForm = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +48,7 @@ const ErfolgForm = () => {
   };
 
   return (
-    <div className="py-20 px-6 bg-white" id="contact">
+    <div className="py-12 px-6 bg-white" id="contact">
       <div className="max-w-6xl mx-auto">
 
         {/* 🔥 SECTION HEADING */}
@@ -76,21 +78,52 @@ const ErfolgForm = () => {
               <li className="flex items-center gap-2">✅ Study Abroad Consultation</li>
             </ul>
 
-            <div className="space-y-4">
-              <div>
-                <p className="font-semibold text-yellow-700">Phone</p>
-                <p className="text-gray-800">+91 7506273011</p>
-              </div>
-
-              <div>
-                <p className="font-semibold text-yellow-700">Email</p>
-                <p className="text-gray-800">info@erfolgsolutions.in</p>
-              </div>
-
-              <div>
-                <p className="font-semibold text-yellow-700">Address</p>
-                <p className="text-gray-800">4/11, 1st floor, Plot No. 43, RTO Road, Nr. Bank of Maharashtra, New Panvel (East), Navi Mumbai - 410206</p>
-              </div>
+            <div className="space-y-6">
+              {[
+                {
+                  type: "Phone",
+                  value: "+91 7506273011",
+                  href: "tel:+917506273011",
+                  icon: <Phone className="w-5 h-5 text-primary" />,
+                },
+                {
+                  type: "Email",
+                  value: "info@erfolgsolutions.in",
+                  href: "mailto:info@erfolgsolutions.in",
+                  icon: <Mail className="w-5 h-5 text-primary" />,
+                },
+                {
+                  type: "Address",
+                  value: "4/11, 1st floor, Plot No. 43, RTO Road, Nr. Bank of Maharashtra, New Panvel (East), Navi Mumbai - 410206",
+                  href: "https://maps.google.com/?q=4/11, 1st floor, Plot No. 43, RTO Road, New Panvel East, Navi Mumbai - 410206",
+                  icon: <MapPin className="w-5 h-5 text-primary" />,
+                },
+              ].map((item, index) => (
+                <motion.a
+                  key={item.type}
+                  href={item.href}
+                  target={item.type === "Address" ? "_blank" : undefined}
+                  rel={item.type === "Address" ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ x: 10, scale: 1.02 }}
+                  className="flex items-start gap-4 p-4 rounded-2xl border border-black/5 bg-gray-50/50 hover:bg-white hover:border-[#FDC017] hover:shadow-lg transition-all duration-300 group cursor-pointer block"
+                >
+                  <div className="p-3 bg-[#FDC017] rounded-xl shadow-[0_4px_12px_rgba(253,192,23,0.3)] transition-transform duration-300 group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-bold text-[#b4860b] text-sm uppercase tracking-wider mb-1">
+                      {item.type}
+                    </p>
+                    <p className="text-gray-800 font-semibold text-base md:text-lg leading-relaxed group-hover:text-primary transition-colors">
+                      {item.value}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </div>
 

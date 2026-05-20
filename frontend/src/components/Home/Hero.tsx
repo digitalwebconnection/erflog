@@ -1,5 +1,6 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 import homehero12 from "../../assets/homehero12.jpg";
 import homehero14 from "../../assets/homehero14.jpg";
@@ -9,6 +10,7 @@ import homehero17 from "../../assets/homehero17.jpg";
 const images = [homehero12, homehero14, homehero17];
 
 const Hero = () => {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -91,20 +93,28 @@ const Hero = () => {
           Get expert guidance for top-tier admissions in the UK, Australia, Ireland, Finland, and UAE.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-5 justify-center items-center"
         >
-          <button className="w-full sm:w-auto px-10 py-4 bg-brandYellow text-primary font-black rounded-2xl shadow-[0_15px_30px_-5px_rgba(253,192,23,0.4)] transition-all duration-300 hover:scale-105 active:scale-95">
+          {/* <button
+            onClick={() => {
+              document.getElementById("destinations")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="w-full sm:w-auto px-10 py-4 bg-brandYellow text-primary font-black rounded-2xl shadow-[0_15px_30px_-5px_rgba(253,192,23,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
+          >
             Explore Destinations
-          </button>
+          </button> */}
 
-          <button className="w-full sm:w-auto px-10 py-4 bg-white/5 backdrop-blur-xl border border-white/15 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 active:scale-95">
+          <button
+            onClick={() => navigate("/contact")}
+            className="w-full sm:w-auto px-10 py-4 bg-brandYellow text-primary font-black rounded-2xl shadow-[0_15px_30px_-5px_rgba(253,192,23,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          >
             Book Free Consultation
           </button>
-        </motion.div>  
+        </motion.div>
       </div>
     </section>
   );

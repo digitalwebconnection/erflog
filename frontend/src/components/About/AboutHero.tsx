@@ -8,7 +8,7 @@ const AboutHero = () => {
     <section className="relative h-[90vh] overflow-hidden flex items-center justify-center text-center">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1651953527447-4ad756efcd48?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="About Erfolg"
           className="w-full h-full object-cover object-center"
         />
@@ -46,7 +46,7 @@ const AboutHero = () => {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(253, 192, 23, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-[#FDC017] text-[#031627] px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-3 mx-auto transition-all"
+                className="bg-[#FDC017] cursor-pointer text-[#031627] px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-3 mx-auto transition-all"
               >
                 Start Your Journey <FaChevronRight className="text-sm" />
               </motion.button>
