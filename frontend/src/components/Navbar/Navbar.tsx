@@ -3,13 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "../../assets/Logo.png";
+import { countries as staticCountries } from "../../constants/countries";
 
 const Navbar = () => {
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
-  const [dynamicCountries, setDynamicCountries] = useState<any[]>([]);
+  // Initialise from localStorage cache (instant) or fall back to static data
+  const [dynamicCountries, setDynamicCountries] = useState<any[]>(() => {
+    try {
+      const cached = localStorage.getItem("navbar_countries");
+      if (cached) return JSON.parse(cached);
+    } catch {}
+    return staticCountries;
+  });
 
   // Mobile Nav States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,13 +27,22 @@ const Navbar = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/countries`);
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/countries`
+        );
         if (response.ok) {
           const data = await response.json();
-          setDynamicCountries(data);
+          if (Array.isArray(data) && data.length > 0) {
+            setDynamicCountries(data);
+            // Cache for the next visit so countries appear instantly
+            try {
+              localStorage.setItem("navbar_countries", JSON.stringify(data));
+            } catch {}
+          }
         }
       } catch (error) {
-        console.error("Error fetching countries:", error);
+        // Backend still waking up (Render cold-start) — static fallback already shown
+        console.warn("Countries fetch failed, using fallback:", error);
       }
     };
     fetchCountries();
@@ -162,26 +179,20 @@ const Navbar = () => {
             {openDropdown === "countries" && (
               <div className="absolute top-full left-0 pt-2 w-64">
                 <ul className="bg-white text-black shadow-xl rounded-lg border border-gray-100 overflow-hidden">
-                  {dynamicCountries.length > 0 ? (
-                    dynamicCountries.map((item) => (
-                      <li key={item.code || item._id}>
-                        <Link
-                          to={`/destination/${item.code}`}
-                          className="block px-6 py-3 hover:bg-[#FDC017]/10 hover:text-[#031627] cursor-pointer transition-colors duration-200 border-b border-gray-50 last:border-0"
-                          onClick={() => {
-                            setOpenDropdown(null);
-                            scrollToTop();
-                          }}
-                        >
-                          {item.name.startsWith("Study in") ? item.name : `Study in ${item.name}`}
-                        </Link>
-                      </li>
-                    ))
-                  ) : (
-                    <li className="px-6 py-3 text-gray-400 text-sm italic text-center">
-                      Loading countries...
+                  {dynamicCountries.map((item) => (
+                    <li key={item.code || item._id}>
+                      <Link
+                        to={`/destination/${item.code}`}
+                        className="block px-6 py-3 hover:bg-[#FDC017]/10 hover:text-[#031627] cursor-pointer transition-colors duration-200 border-b border-gray-50 last:border-0"
+                        onClick={() => {
+                          setOpenDropdown(null);
+                          scrollToTop();
+                        }}
+                      >
+                        {item.name.startsWith("Study in") ? item.name : `Study in ${item.name}`}
+                      </Link>
                     </li>
-                  )}
+                  ))}
                 </ul>
               </div>
             )}
@@ -325,21 +336,17 @@ const Navbar = () => {
                     </button>
                     {mobileCountriesOpen && (
                       <ul className="pl-4 mt-2 space-y-3 text-sm text-gray-300 capitalize tracking-normal border-l border-white/10 ml-2 max-h-60 overflow-y-auto">
-                        {dynamicCountries.length > 0 ? (
-                          dynamicCountries.map((item) => (
-                            <li key={item.code || item._id}>
-                              <Link
-                                to={`/destination/${item.code}`}
-                                className="block py-1 hover:text-[#FDC017] transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                {item.name.startsWith("Study in") ? item.name : `Study in ${item.name}`}
-                              </Link>
-                            </li>
-                          ))
-                        ) : (
-                          <li className="py-1 text-gray-500 italic">Loading countries...</li>
-                        )}
+                        {dynamicCountries.map((item) => (
+                          <li key={item.code || item._id}>
+                            <Link
+                              to={`/destination/${item.code}`}
+                              className="block py-1 hover:text-[#FDC017] transition-colors"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.name.startsWith("Study in") ? item.name : `Study in ${item.name}`}
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     )}
                   </li>
