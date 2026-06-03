@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
 
 const AdmissionCTA = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative py-8 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
@@ -36,9 +38,10 @@ const AdmissionCTA = () => {
               {/* Actions */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto pt-8">
                 <motion.button
+                  onClick={() => navigate("/contact")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl shadow-xl hover:shadow-[#FDC017]/20 transition-all duration-300 flex items-center justify-center gap-3 group"
+                  className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl shadow-xl hover:shadow-[#FDC017]/20 transition-all duration-300 flex items-center justify-center gap-3 group cursor-pointer"
                 >
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

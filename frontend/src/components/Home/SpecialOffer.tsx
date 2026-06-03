@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { FaGraduationCap, FaCheckCircle, FaHospital } from "react-icons/fa";
 import bgImage from "../../assets/hero_bg.png";
 
 const Promotional = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-8 relative overflow-hidden">
       {/* Background Image with Overlay */}
@@ -36,7 +38,10 @@ const Promotional = () => {
               </li>
             ))}
           </ul>
-         <button className="px-10 py-2 bg-[#FDC017] text-primary font-bold rounded-full hover:bg-white transition-all duration-300 cursor-pointer">
+         <button 
+           onClick={() => navigate("/contact")}
+           className="px-10 py-2 bg-[#FDC017] text-primary font-bold rounded-full hover:bg-white transition-all duration-300 cursor-pointer"
+         >
            Apply Now
          </button>
         </motion.div>

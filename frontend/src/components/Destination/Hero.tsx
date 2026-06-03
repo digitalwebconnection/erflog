@@ -88,7 +88,7 @@ const Hero = ({ data }: HeroProps) => {
             </motion.div>
           )}
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight tracking-tighter">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
             <SplitText text={prefix} className="block mb-1" />
             {suffix && (
               <span className="text-[#FDC017] relative">

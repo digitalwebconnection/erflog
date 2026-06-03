@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
@@ -19,6 +19,8 @@ import Alumni from './components/Alumni/Alumni'
 import AdminApp from './admin/AdminApp'
 
 function App() {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.0, 
@@ -31,6 +33,8 @@ function App() {
       syncTouch: true,
     })
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time)
       requestAnimationFrame(raf)
@@ -39,11 +43,21 @@ function App() {
     requestAnimationFrame(raf)
 
     return () => {
-      lenis.destroy()
+      lenis.destroy();
+      lenisRef.current = null;
     }
   }, [])
 
   const location = useLocation();
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (

@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Mic, Video, Users, CheckCircle, FileCheck, Landmark, Clock } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
 const InterviewVisa = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
@@ -11,7 +13,7 @@ const InterviewVisa = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-            alt="Global Academic Connectivity" 
+            alt="" 
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-[#031627]/60 z-10" />
@@ -28,7 +30,7 @@ const InterviewVisa = () => {
               Final Milestone
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
-              <SplitText text="Master the Final " className="inline" />
+              <SplitText text="Master the Final" className="inline" />{"\u00A0"}
               <span className="text-[#FDC017] relative">
                 <SplitText text="Hurdle" />
               </span>
@@ -243,6 +245,7 @@ const InterviewVisa = () => {
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <motion.button 
+                  onClick={() => navigate("/contact")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-[#FDC017]/20 group cursor-pointer"
@@ -252,6 +255,7 @@ const InterviewVisa = () => {
                 </motion.button>
 
                 <motion.button 
+                  onClick={() => navigate("/contact")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center cursor-pointer"

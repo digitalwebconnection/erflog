@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import jointDegreeImg from "../../assets/joint_degree.png";
 
 const courses = [
@@ -31,6 +32,7 @@ const jointDegrees = [
 ];
 
 const Courses = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-12 bg-bg-alt px-6" id="courses">
       <div className="max-w-7xl mx-auto">
@@ -92,7 +94,10 @@ const Courses = () => {
                 <h3 className="text-xl font-bold text-primary mb-4 transition-colors leading-tight">
                   {course.title}
                 </h3>
-                <button className="w-full py-3 bg-[#FDC017] text-black font-bold rounded-xl hover:bg-accent transition-all cursor-pointer shadow-md">
+                <button 
+                  onClick={() => navigate("/contact")}
+                  className="w-full py-3 bg-[#FDC017] text-black font-bold rounded-xl hover:bg-accent transition-all cursor-pointer shadow-md"
+                >
                   View Details
                 </button>
               </div>

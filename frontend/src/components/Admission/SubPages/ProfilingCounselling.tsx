@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { UserCheck, Compass, Target, MessageSquare, ShieldCheck, Heart, Lightbulb, Zap } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
 const ProfilingCounselling = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
   // A helper function to track mouse hover for premium spotlight glow
@@ -31,7 +33,7 @@ const ProfilingCounselling = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1653566031587-74f7d86a2e71?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fEV4cGVydCUyME1lbnRvcnNoaXB8ZW58MHx8MHx8fDA%3D" 
-            alt="Professional Mentorship" 
+            alt="" 
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-black/50 z-10" />
@@ -48,7 +50,7 @@ const ProfilingCounselling = () => {
               Expert Mentorship
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
-              <SplitText text="Unlocking Your " className="inline" />
+              <SplitText text="Unlocking Your" className="inline" />{"\u00A0"}
               <span className="text-[#FDC017] relative">
                 <SplitText text="Potential" />
               </span>
@@ -385,9 +387,10 @@ const ProfilingCounselling = () => {
               </p>
               
               <motion.button 
+                onClick={() => navigate("/contact")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20"
+                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 cursor-pointer"
               >
                 Book a Session Now
               </motion.button>

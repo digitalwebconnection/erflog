@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Globe, Award, CheckCircle, MapPin, Briefcase, Star } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
@@ -29,6 +30,7 @@ const cardVariants: Variants = {
 };
 
 const TestSelection = () => {
+  const navigate = useNavigate();
   // A helper function to track mouse hover for premium spotlight glow
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { currentTarget, clientX, clientY } = e;
@@ -47,7 +49,7 @@ const TestSelection = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
-            alt="Global Students Studying"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-[#031627]/60 z-10" />
@@ -64,11 +66,10 @@ const TestSelection = () => {
               Global Standards
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
-              <SplitText text="Master Your " className="inline" />
+              <SplitText text="Master Your" className="inline" />{"\u00A0"}
               <span className="text-[#FDC017] relative">
-                <SplitText text="Exams & Choose " />
-              </span>
-              <SplitText text="" className="inline" />
+                <SplitText text="Exams & Choose" />
+              </span>{"\u00A0"}
               <br />   
               <SplitText text="Your Path" className="inline" />
             </h1>
@@ -175,7 +176,10 @@ const TestSelection = () => {
 
                   {/* Custom animated Learn More CTA */}
                   <div className="relative z-10 pt-4 flex items-center">
-                    <button className="text-[#031627] font-bold text-sm flex items-center gap-2.5 transition-all duration-300 group/btn bg-transparent border-none p-0 cursor-pointer">
+                    <button 
+                      onClick={() => navigate("/contact")}
+                      className="text-[#031627] font-bold text-sm flex items-center gap-2.5 transition-all duration-300 group/btn bg-transparent border-none p-0 cursor-pointer"
+                    >
                       <span className="group-hover:text-[#FDC017] transition-colors duration-300">Learn More</span>
                       <motion.div
                         className="w-6 h-6 rounded-full bg-gray-50 border border-gray-150 flex items-center justify-center group-hover/btn:bg-[#FDC017] group-hover/btn:border-[#FDC017] transition-all duration-300 shrink-0"
@@ -373,6 +377,7 @@ const TestSelection = () => {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <motion.button
+                  onClick={() => navigate("/contact")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-2xl hover:bg-white transition-all duration-300 shadow-xl shadow-[#FDC017]/20 cursor-pointer"
@@ -381,6 +386,7 @@ const TestSelection = () => {
                 </motion.button>
 
                 <motion.button
+                  onClick={() => navigate("/contact")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 cursor-pointer"

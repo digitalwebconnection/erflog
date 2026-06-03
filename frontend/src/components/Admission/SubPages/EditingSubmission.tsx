@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Edit3, FileText, Send, ShieldCheck, CheckCircle2, ClipboardCheck } from "lucide-react";
 import { SplitText } from "../../About/Shared";
 
 const EditingSubmission = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section - 90vh Full-Width Background */}
@@ -11,7 +13,7 @@ const EditingSubmission = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1973&auto=format&fit=crop" 
-            alt="Professional Writing and Editing" 
+            alt="" 
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-[#031627]/60 z-10" />
@@ -28,7 +30,7 @@ const EditingSubmission = () => {
               Precision & Quality
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
-              <SplitText text="Crafting " className="inline" />
+              <SplitText text="Crafting" className="inline" />{"\u00A0"}
               <span className="text-[#FDC017] relative">
                 <SplitText text="Impactful" />
               </span>
@@ -255,6 +257,7 @@ const EditingSubmission = () => {
               </p>
               
               <motion.button 
+                onClick={() => navigate("/contact")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group cursor-pointer"

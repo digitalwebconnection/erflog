@@ -3,22 +3,36 @@ import { useEffect, useState, useRef } from "react";
 
 // Helper for character-by-character animation
 export const SplitText = ({ text, className }: { text: string; className?: string }) => {
+  const words = text.trim().split(/\s+/);
+  let charCount = 0;
+
   return (
-    <span className={className}>
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: index * 0.03,
-            ease: [0.2, 0.65, 0.3, 0.9] as any,
-          }}
-          style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
-        >
-          {char}
-        </motion.span>
+    <span key={text} className={className}>
+      {words.map((word, wordIdx) => (
+        <span key={wordIdx}>
+          <span className="inline-block whitespace-nowrap">
+            {word.split("").map((char) => {
+              const delay = charCount * 0.03;
+              charCount++;
+              return (
+                <motion.span
+                  key={`${text}-${wordIdx}-${charCount}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: delay,
+                    ease: [0.2, 0.65, 0.3, 0.9] as any,
+                  }}
+                  style={{ display: "inline-block" }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
+          {wordIdx < words.length - 1 && " "}
+        </span>
       ))}
     </span>
   );

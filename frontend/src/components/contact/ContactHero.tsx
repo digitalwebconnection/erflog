@@ -8,7 +8,7 @@ const ContactHero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop"
-          alt="Contact Erfolg"
+          alt=""
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-[#031627]/60" />
@@ -21,7 +21,7 @@ const ContactHero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
             <SplitText text="Let’s Shape Your" className="block mb-1" />
             <span className="text-[#FDC017] relative">
               <SplitText text="Future Together" />

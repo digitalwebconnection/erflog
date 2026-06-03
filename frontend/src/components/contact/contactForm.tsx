@@ -86,7 +86,9 @@ const ErfolgForm = () => {
 
               <div>
                 <p className="font-semibold text-yellow-700">Email</p>
-                <p className="text-gray-800">info@erfolgsolutions.in</p>
+                <p className="text-gray-800">
+                  <a href="mailto:info@erfolgsolutions.in" className="hover:text-yellow-600 transition">info@erfolgsolutions.in</a>
+                </p>
               </div>
             </div>
           </div>

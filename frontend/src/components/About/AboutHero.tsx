@@ -9,7 +9,7 @@ const AboutHero = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1651953527447-4ad756efcd48?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="About Erfolg"
+          alt=""
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-[#031627]/60" />
@@ -21,7 +21,7 @@ const AboutHero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
             <SplitText text="Empowering Your" className="block mb-1" />
             <span className="text-[#FDC017] relative">
               <SplitText text="Global Aspirations" />

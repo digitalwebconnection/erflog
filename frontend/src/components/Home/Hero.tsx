@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { SplitText } from "../About/Shared";
 
 import homehero12 from "../../assets/homehero12.jpg";
 import homehero14 from "../../assets/homehero14.jpg";
@@ -69,20 +70,16 @@ const Hero = () => {
           <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">India's #1 Trusted Study Abroad Partner</span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight"
-        >
-          Transform Your Future with <br />
-          <span className="text-brandYellow relative">
-            Global Education
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight">
+          <SplitText text="Transform Your Future with" />
+          <br />
+          <span className="text-brandYellow relative inline-block">
+            <SplitText text="Global Education" />
             <svg className="absolute -bottom-2 left-0 w-full h-2 text-brandYellow/30" viewBox="0 0 100 10" preserveAspectRatio="none">
               <path d="M0 5 Q 25 0 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="2" />
             </svg>
           </span>
-        </motion.h1>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

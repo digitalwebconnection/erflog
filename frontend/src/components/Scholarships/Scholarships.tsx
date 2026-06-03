@@ -47,7 +47,7 @@ const Scholarships = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop" 
-            alt="Prestigious University Campus" 
+            alt="" 
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-black/70 z-10" />
@@ -60,7 +60,7 @@ const Scholarships = () => {
             transition={{ duration: 1 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
               <SplitText text="Elite Funding &" className="block mb-1" />
               <span className="text-[#FDC017] relative">
                 <SplitText text="Scholarship Mastery" />
@@ -386,14 +386,16 @@ const Scholarships = () => {
                 Speak with our financial aid experts to discover which global scholarships you are eligible for and start your application today.
               </p>
               
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group cursor-pointer"
-              >
-                Get Free Assessment
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <Link to="/contact">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 bg-[#FDC017] text-[#031627] font-bold rounded-xl hover:bg-white transition-all duration-300 flex items-center gap-3 mx-auto shadow-xl shadow-[#FDC017]/20 group cursor-pointer"
+                >
+                  Get Free Assessment
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>

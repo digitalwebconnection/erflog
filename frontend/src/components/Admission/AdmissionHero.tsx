@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { GraduationCap, Landmark, Users } from "lucide-react";
+import { SplitText } from "../About/Shared";
 
 const AdmissionHero = () => {
+  const navigate = useNavigate();
   const features = [
     { 
       icon: <GraduationCap className="w-5 h-5 lg:w-7 lg:h-7 text-[#FDC017]" />, 
@@ -53,8 +56,12 @@ const AdmissionHero = () => {
                 Global Education Hub
               </motion.span>
               
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-5 tracking-tight">
-                Your Pathway to <span className="text-[#FDC017] inline-block">Excellence</span> at Top Universities
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.15] mb-5 tracking-tight">
+                <SplitText text="Your Pathway to" />{"\u00A0"}
+                <span className="text-[#FDC017] inline-block relative">
+                  <SplitText text="Excellence" />
+                </span>{"\u00A0"}
+                <SplitText text="at Top Universities" />
               </h1>
               
               <p className="text-sm md:text-base lg:text-lg text-gray-300 mb-8 lg:mb-10 max-w-xl leading-relaxed mx-auto lg:mx-0">
@@ -63,16 +70,18 @@ const AdmissionHero = () => {
               
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                 <motion.button
+                  onClick={() => navigate("/contact")}
                   whileHover={{ y: -3, scale: 1.02, backgroundColor: "#fff" }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-3.5 lg:py-4 bg-[#FDC017] text-[#031627] font-black text-sm rounded-xl shadow-xl shadow-[#FDC017]/20 transition-all duration-300"
+                  className="px-8 py-3.5 lg:py-4 bg-[#FDC017] text-[#031627] font-black text-sm rounded-xl shadow-xl shadow-[#FDC017]/20 transition-all duration-300 cursor-pointer"
                 >
                   Start Your Journey
                 </motion.button>
                 <motion.button
+                  onClick={() => navigate("/")}
                   whileHover={{ y: -3, scale: 1.02, backgroundColor: "rgba(255,255,255,0.1)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-3.5 lg:py-4 bg-transparent border-2 border-white/20 text-white font-black text-sm rounded-xl transition-all duration-300 backdrop-blur-sm"
+                  className="px-8 py-3.5 lg:py-4 bg-transparent border-2 border-white/20 text-white font-black text-sm rounded-xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
                 >
                   Explore Countries
                 </motion.button>

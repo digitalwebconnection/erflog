@@ -51,6 +51,7 @@ const Footer = () => {
             {[
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about" },
+              { name: "Alumni Stories", path: "/alumni" },
               { name: "Scholarships & Funding", path: "/scholarships" },
               { name: "Contact Us", path: "/contact" }
             ].map((link) => (
@@ -99,17 +100,20 @@ const Footer = () => {
           </h3>
           <ul className="space-y-2 text-sm text-gray-300">
             {[
-              "United Kingdom",
-              "United States",
-              "Australia",
-              "Ireland",
-              "Finland",
+              { name: "United Kingdom", code: "uk" },
+              { name: "United States", code: "usa" },
+              { name: "Australia", code: "australia" },
+              { name: "Ireland", code: "ireland" },
+              { name: "Finland", code: "finland" },
             ].map((item) => (
-              <li
-                key={item}
-                className="hover:text-[#FDC017] cursor-pointer transition-colors"
-              >
-                Study in {item}
+              <li key={item.code}>
+                <Link 
+                  to={`/destination/${item.code}`} 
+                  onClick={scrollToTop}
+                  className="hover:text-[#FDC017] transition-colors"
+                >
+                  Study in {item.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -123,7 +127,17 @@ const Footer = () => {
           <ul className="space-y-2 text-sm text-gray-300">
             <li className="text-gray-300">Email: <a href="mailto:info@erfolgsolutions.in" className="hover:text-yellow-400 transition">info@erfolgsolutions.in</a></li>
             <li className="text-gray-300">Phone: <br /><a href="tel:+917506273011" className="hover:text-yellow-400 transition">+91 75062 73011</a> <br /> <a href="tel:+917506723011" className="hover:text-yellow-400 transition">+91 75067 23011</a></li>
-            <li className="text-gray-300">Address : HO – 3/31 Atlanta building, Kandivali village, Kandivali West, Mumbai - 400067</li>
+            <li className="text-gray-300">
+              Address: <br />
+              <a 
+                href="https://maps.google.com/?q=HO+3/31+Atlanta+building+Kandivali+West+Mumbai+400067"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-yellow-400 transition"
+              >
+                HO – 3/31 Atlanta building, Kandivali village, Kandivali West, Mumbai - 400067
+              </a>
+            </li>
           </ul>
         </div>
       </div>

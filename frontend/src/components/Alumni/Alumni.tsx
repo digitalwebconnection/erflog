@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Award, Heart, CheckCircle2, ChevronRight } from "lucide-react";
+import { Globe, Award, Heart, CheckCircle2, ChevronRight, Plane, Home, Briefcase } from "lucide-react";
 import { SplitText, Counter, FloatingShape, containerVariants, itemVariants } from "../About/Shared";
 import { Link } from "react-router-dom";
 
@@ -78,10 +78,21 @@ const alumniData: Alumnus[] = [
   }
 ];
 
+
+
 const countriesList = ["All", "United Kingdom", "Canada", "Australia", "United States", "Finland"];
 
 const Alumni = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { currentTarget, clientX, clientY } = e;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    const x = clientX - left;
+    const y = clientY - top;
+    currentTarget.style.setProperty("--x", `${x}px`);
+    currentTarget.style.setProperty("--y", `${y}px`);
+  };
 
   const filteredAlumni = activeFilter === "All"
     ? alumniData
@@ -102,7 +113,7 @@ const Alumni = () => {
         <div className="absolute inset-0 z-0 opacity-15">
           <img
             src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop"
-            alt="Graduation background"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#031627] via-transparent to-[#031627]" />
@@ -121,7 +132,7 @@ const Alumni = () => {
               <span className="inline-block px-4 py-1.5 bg-[#FDC017]/10 text-[#FDC017] text-[10px] font-bold uppercase tracking-widest rounded-full mb-6 border border-[#FDC017]/20">
                 Global Alumni Network
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
                 <SplitText text="Stories of Global" className="block mb-1" />
                 <span className="text-[#FDC017] relative">
                   <SplitText text="Student Success" />
@@ -220,6 +231,8 @@ const Alumni = () => {
         </div>
       </section>
 
+
+
       {/* Main Alumni Stories Section */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-6">
@@ -311,6 +324,128 @@ const Alumni = () => {
               ))}
             </AnimatePresence>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Post-Admission Transition Support */}
+      <section className="py-12 bg-gray-50/50 relative overflow-hidden">
+        {/* Decorative background shape */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FDC017]/3 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#031627]/3 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-4 py-1.5 bg-[#FDC017]/10 text-[#031627] text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-[#FDC017]/20">
+                End-to-End Guidance
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-[#031627] mb-6 leading-tight tracking-tighter">
+                Your Transition <span className="text-[#FDC017]">Support Ecosystem</span>
+              </h2>
+              <p className="text-gray-500 text-base md:text-lg leading-relaxed font-medium">
+                Our support extends far beyond your admission offer. We prepare you to land, settle, and build your career in a new country with complete peace of mind.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                step: "01",
+                icon: <Plane className="w-6 h-6" />,
+                title: "Pre-Departure Prep",
+                desc: "Before you fly, we coordinate with you and your family to ensure complete preparedness.",
+                points: [
+                  "Forex & tuition payment advice",
+                  "Flight booking & baggage allowance",
+                  "Essential pre-departure checklists",
+                  "Pre-departure medical & travel insurance"
+                ]
+              },
+              {
+                step: "02",
+                icon: <Home className="w-6 h-6" />,
+                title: "Post-Arrival Settling",
+                desc: "Once you land, we assist in establishing your new routine and finding accommodation.",
+                points: [
+                  "Airport pickup coordination",
+                  "Student accommodation verification",
+                  "Local SIM card & transit passes",
+                  "Student bank account opening guide"
+                ]
+              },
+              {
+                step: "03",
+                icon: <Briefcase className="w-6 h-6" />,
+                title: "Career & Integration",
+                desc: "We connect you to the local community and set you up for long-term career growth.",
+                points: [
+                  "Access to city WhatsApp groups",
+                  "Post-study work rights briefing",
+                  "Part-time job guidelines",
+                  "Resume templates & local networking"
+                ]
+              }
+            ].map((phase, idx) => (
+              <motion.div
+                key={phase.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                whileHover={{ y: -12, scale: 1.025 }}
+                onMouseMove={handleMouseMove}
+                className="group bg-slate-50/90 rounded-2xl border border-gray-200/60 p-8 flex flex-col justify-between transition-all duration-500 relative overflow-hidden cursor-default shadow-md shadow-slate-100/80 hover:shadow-[0_25px_60px_rgba(3,22,39,0.12)] hover:border-[#FDC017]/40"
+              >
+                {/* Spotlight hover glow */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
+                  style={{
+                    background: "radial-gradient(300px circle at var(--x, 50%) var(--y, 50%), rgba(253, 192, 23, 0.08), transparent 80%)"
+                  }}
+                />
+
+                {/* Gold top hover bar */}
+                <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#FDC017] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-10" />
+                
+                <div className="relative z-10">
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-[#031627] flex items-center justify-center text-[#FDC017] group-hover:bg-[#FDC017] group-hover:text-white group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                      {phase.icon}
+                    </div>
+
+                    <span className="text-4xl font-black text-gray-200 group-hover:text-[#FDC017] group-hover:scale-110 transition-all duration-500">
+                      {phase.step}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-black text-[#031627] mb-3 group-hover:text-[#FDC017] group-hover:translate-x-1 transition-all duration-300">
+                    {phase.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-500 leading-relaxed mb-6 font-medium">
+                    {phase.desc}
+                  </p>
+
+                  <div className="h-[1px] bg-gray-100 my-5" />
+
+                  <ul className="space-y-3">
+                    {phase.points.map((pt, i) => (
+                      <li key={i} className="text-xs text-gray-600 flex items-center gap-2 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
