@@ -82,7 +82,7 @@ const ErfolgForm = () => {
               {[
                 {
                   type: "Phone",
-                  value: "+91 7506273011",
+                  value: "+91 75062 73011 / +91 75067 23011",
                   href: "tel:+917506273011",
                   icon: <Phone className="w-5 h-5 text-primary" />,
                 },
@@ -94,8 +94,8 @@ const ErfolgForm = () => {
                 },
                 {
                   type: "Address",
-                  value: "4/11, 1st floor, Plot No. 43, RTO Road, Nr. Bank of Maharashtra, New Panvel (East), Navi Mumbai - 410206",
-                  href: "https://maps.google.com/?q=4/11, 1st floor, Plot No. 43, RTO Road, New Panvel East, Navi Mumbai - 410206",
+                  value: "HO – 3/31 Atlanta building, Kandivali village, Kandivali West, Mumbai - 400067",
+                  href: "https://maps.google.com/?q=HO+3/31+Atlanta+building+Kandivali+West+Mumbai+400067",
                   icon: <MapPin className="w-5 h-5 text-primary" />,
                 },
               ].map((item, index) => (

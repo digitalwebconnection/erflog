@@ -67,6 +67,7 @@ const Navbar = () => {
     if (path === "/about") return "About Us";
     if (path.startsWith("/admission")) return "University Admission";
     if (path === "/scholarships") return "Scholarships & Funding";
+    if (path === "/alumni") return "Alumni";
     if (path === "/contact") return "Contact Us";
     return "";
   };
@@ -74,7 +75,7 @@ const Navbar = () => {
   const active = getActiveItem();
 
   const menuItemClass = (item: string) =>
-    `cursor-pointer px-4 py-2 text-sm font-medium uppercase tracking-wide flex items-center gap-1 ${
+    `cursor-pointer px-2 xl:px-3 py-2 text-[13px] xl:text-sm font-medium uppercase tracking-wide whitespace-nowrap flex items-center gap-1 ${
       active === item ? "text-[#FDC017]" : "text-white"
     } hover:text-[#FDC017] transition-colors duration-200`;
 
@@ -102,7 +103,7 @@ const Navbar = () => {
         initial={false}
         animate={{ y: hidden ? -80 : 0 }}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full bg-[#092238] px-6 lg:px-18 flex items-center justify-between z-50 shadow-md h-20 will-change-transform"
+        className="fixed top-0 left-0 w-full bg-[#092238] px-6 lg:px-8 xl:px-14 flex items-center justify-between z-50 shadow-md h-20 will-change-transform"
       >
         {/* Logo */}
         <Link to="/" className="cursor-pointer" onClick={scrollToTop}>
@@ -110,7 +111,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu - hidden on mobile/tablet */}
-        <ul className="hidden lg:flex items-center space-x-6 relative">
+        <ul className="hidden lg:flex items-center space-x-2 xl:space-x-4 relative">
 
           {/* Home */}
           <li>
@@ -206,6 +207,17 @@ const Navbar = () => {
               onClick={scrollToTop}
             >
               Scholarships & Funding
+            </Link>
+          </li>
+
+          {/* Alumni */}
+          <li>
+            <Link
+              to="/alumni"
+              className={menuItemClass("Alumni")}
+              onClick={scrollToTop}
+            >
+              Alumni Stories
             </Link>
           </li>
 
@@ -358,6 +370,15 @@ const Navbar = () => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Scholarships & Funding
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/alumni"
+                      className={`block py-2 ${location.pathname === "/alumni" ? "text-[#FDC017]" : "text-white"}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Alumni Stories
                     </Link>
                   </li>
                   <li>

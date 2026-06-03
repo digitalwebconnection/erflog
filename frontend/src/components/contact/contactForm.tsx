@@ -79,7 +79,9 @@ const ErfolgForm = () => {
             <div className="space-y-4">
               <div>
                 <p className="font-semibold text-yellow-700">Phone</p>
-                <p className="text-gray-800">+91 7506273011</p>
+                <p className="text-gray-800">
+                  <a href="tel:+917506273011" className="hover:text-yellow-600 transition">+91 75062 73011</a>, <a href="tel:+917506723011" className="hover:text-yellow-600 transition">+91 75067 23011</a>
+                </p>
               </div>
 
               <div>

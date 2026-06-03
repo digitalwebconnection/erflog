@@ -15,6 +15,7 @@ import InterviewVisa from './components/Admission/SubPages/InterviewVisa'
 import Scholarships from './components/Scholarships/Scholarships'
 import Contact from './components/contact/ContactMain'
 import DestinationPage from './components/Destination/DestinationPage'
+import Alumni from './components/Alumni/Alumni'
 import AdminApp from './admin/AdminApp'
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
           <Route path="/admission/submission" element={<EditingSubmission />} />
           <Route path="/admission/visa" element={<InterviewVisa />} />
           <Route path="/scholarships" element={<Scholarships />} />
+          <Route path="/alumni" element={<Alumni />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/destination/:country" element={<DestinationPage />} />
           <Route path="/admin/*" element={<AdminApp />} />

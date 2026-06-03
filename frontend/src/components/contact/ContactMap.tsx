@@ -8,19 +8,19 @@ const ContactMap = () => {
       label: "Address",
       value: (
         <>
-          Erfolg Solutions, <br />
-          Ahmedabad, Gujarat, India
+          HO – 3/31 Atlanta building, <br />
+          Kandivali village, Kandivali West, Mumbai - 400067
         </>
       ),
-      link: "https://maps.google.com/?q=Erfolg+Solutions+Ahmedabad+Gujarat"
+      link: "https://maps.google.com/?q=HO+3/31+Atlanta+building+Kandivali+West+Mumbai+400067"
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: "Call Us",
       value: (
         <>
-          +91 7506273011 <br />
-          +91 98765 43210
+          +91 75062 73011 <br />
+          +91 75067 23011
         </>
       ),
       link: "tel:+917506273011"
@@ -31,7 +31,7 @@ const ContactMap = () => {
       value: (
         <>
           info@erfolgsolutions.in <br />
-          info@erfolg.com
+          &nbsp;
         </>
       ),
       link: "mailto:info@erfolgsolutions.in"
@@ -143,7 +143,7 @@ const ContactMap = () => {
             
             <iframe 
               title="Erfolg Office Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117505.74836647248!2d72.50868846939527!3d23.020243686861596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fccd11d087786ca!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=HO%20%E2%80%93%203/31%20Atlanta%20building,%20Kandivali%20village,%20Kandivali%20West,%20Mumbai%20-%20400067&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -161,7 +161,7 @@ const ContactMap = () => {
                 </div>
                 <div>
                   <h5 className="font-bold text-[#031627] text-sm">Erfolg Solutions</h5>
-                  <p className="text-[11px] text-gray-500 font-medium mt-0.5">Ahmedabad, Gujarat, India</p>
+                  <p className="text-[11px] text-gray-500 font-medium mt-0.5">Kandivali West, Mumbai</p>
                 </div>
               </div>
             </div>

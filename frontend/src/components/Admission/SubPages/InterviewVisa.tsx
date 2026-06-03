@@ -110,7 +110,7 @@ const InterviewVisa = () => {
       </section>
 
       {/* NEW SECTION: Visa Success System */}
-      <section className="py-20 bg-gradient-to-b from-white via-[#FDC017]/3 to-white overflow-hidden relative border-t border-gray-50">
+      <section className="py-12 bg-gradient-to-b from-white via-[#FDC017]/3 to-white overflow-hidden relative border-t border-gray-50">
         {/* Decorative backdrop elements */}
         <div className="absolute top-1/2 left-1/4 w-80 h-80 bg-[#FDC017]/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
 

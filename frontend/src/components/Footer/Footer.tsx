@@ -121,9 +121,9 @@ const Footer = () => {
             Contact
           </h3>
           <ul className="space-y-2 text-sm text-gray-300">
-            <li className="cursor-pointer hover:text-yellow-400 transition">Email: info@erfolg.com</li>
-            <li className="cursor-pointer hover:text-yellow-400 transition">Phone: +91 98765 43210</li>
-            <li className="cursor-pointer hover:text-yellow-400 transition">Ahmedabad, Gujarat, India</li>
+            <li className="text-gray-300">Email: <a href="mailto:info@erfolgsolutions.in" className="hover:text-yellow-400 transition">info@erfolgsolutions.in</a></li>
+            <li className="text-gray-300">Phone: <br /><a href="tel:+917506273011" className="hover:text-yellow-400 transition">+91 75062 73011</a> <br /> <a href="tel:+917506723011" className="hover:text-yellow-400 transition">+91 75067 23011</a></li>
+            <li className="text-gray-300">Address : HO – 3/31 Atlanta building, Kandivali village, Kandivali West, Mumbai - 400067</li>
           </ul>
         </div>
       </div>
