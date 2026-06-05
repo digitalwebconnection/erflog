@@ -11,13 +11,36 @@ connectDB();
 // ─── Middleware ───────────────────────────────────────────
 const allowedOrigins = ['http://localhost:5173'];
 if (process.env.FRONTEND_URL) {
-  const origins = process.env.FRONTEND_URL.split(',').map(url => url.trim().replace(/\/$/, ""));
-  allowedOrigins.push(...origins);
+  // Split by comma, semicolon, whitespace, or newlines
+  const rawOrigins = process.env.FRONTEND_URL.split(/[\s,;]+/);
+  rawOrigins.forEach(rawUrl => {
+    const url = rawUrl.trim().replace(/\/$/, "");
+    if (!url) return;
+    
+    if (/^https?:\/\//i.test(url)) {
+      allowedOrigins.push(url);
+    } else {
+      // If protocol is missing, add both http and https variants
+      allowedOrigins.push(`http://${url}`);
+      allowedOrigins.push(`https://${url}`);
+    }
+  });
 }
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    // Normalize request origin for reliable matching
+    const normalizedOrigin = origin.trim().toLowerCase().replace(/\/$/, "");
+    
+    const isAllowed = allowedOrigins.some(allowed => {
+      return allowed.trim().toLowerCase().replace(/\/$/, "") === normalizedOrigin;
+    });
+
+    if (isAllowed) {
       callback(null, true);
     } else {
       console.warn(`[CORS] Blocked request from origin: ${origin}`);

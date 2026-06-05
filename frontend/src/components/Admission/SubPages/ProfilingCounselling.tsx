@@ -31,7 +31,7 @@ const ProfilingCounselling = () => {
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1653566031587-74f7d86a2e71?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fEV4cGVydCUyME1lbnRvcnNoaXB8ZW58MHx8MHx8fDA%3D" 
             alt="" 
             className="w-full h-full object-cover" 
