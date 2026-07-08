@@ -1,8 +1,36 @@
+import { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 
 const Footer = () => {
+  const [dynamicCountries, setDynamicCountries] = useState<any[]>(() => {
+    try {
+      const cached = localStorage.getItem("navbar_countries");
+      if (cached) return JSON.parse(cached);
+    } catch {}
+    return [];
+  });
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/countries`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setDynamicCountries(data);
+          }
+        }
+      } catch (error) {
+        console.warn("Footer countries fetch failed:", error);
+      }
+    };
+    fetchCountries();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -99,20 +127,14 @@ const Footer = () => {
             Study Destinations
           </h3>
           <ul className="space-y-2 text-sm text-gray-300">
-            {[
-              { name: "United Kingdom", code: "uk" },
-              { name: "United States", code: "usa" },
-              { name: "Australia", code: "australia" },
-              { name: "Ireland", code: "ireland" },
-              { name: "Finland", code: "finland" },
-            ].map((item) => (
-              <li key={item.code}>
+            {dynamicCountries.map((item) => (
+              <li key={item.code || item._id}>
                 <Link 
                   to={`/destination/${item.code}`} 
                   onClick={scrollToTop}
                   className="hover:text-[#FDC017] transition-colors"
                 >
-                  Study in {item.name}
+                  {item.name.startsWith("Study in") ? item.name : `Study in ${item.name}`}
                 </Link>
               </li>
             ))}

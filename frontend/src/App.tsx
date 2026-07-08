@@ -17,11 +17,23 @@ import Contact from './components/contact/ContactMain'
 import DestinationPage from './components/Destination/DestinationPage'
 import Alumni from './components/Alumni/Alumni'
 import AdminApp from './admin/AdminApp'
+import BlogMain from './components/blog/BlogMain'
+import BlogDetails from './components/blog/BlogDetails'
 
 function App() {
   const lenisRef = useRef<Lenis | null>(null);
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
 
   useEffect(() => {
+    if (isAdmin) {
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.0, 
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -36,6 +48,7 @@ function App() {
     lenisRef.current = lenis;
 
     function raf(time: number) {
+      if (!lenisRef.current) return;
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
@@ -46,9 +59,7 @@ function App() {
       lenis.destroy();
       lenisRef.current = null;
     }
-  }, [])
-
-  const location = useLocation();
+  }, [isAdmin])
 
   useEffect(() => {
     if (lenisRef.current) {
@@ -57,8 +68,6 @@ function App() {
       window.scrollTo(0, 0);
     }
   }, [location.pathname]);
-
-  const isAdmin = location.pathname.startsWith('/admin');
 
   return (
     <>
@@ -74,6 +83,8 @@ function App() {
           <Route path="/admission/visa" element={<InterviewVisa />} />
           <Route path="/scholarships" element={<Scholarships />} />
           <Route path="/alumni" element={<Alumni />} />
+          <Route path="/blog" element={<BlogMain />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/destination/:country" element={<DestinationPage />} />
           <Route path="/admin/*" element={<AdminApp />} />

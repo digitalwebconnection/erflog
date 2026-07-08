@@ -1,5 +1,5 @@
 {
-  "name": "excelencia-root",
+  "name": "erfolg-root",
   "private": true,
   "scripts": {
     "frontend-dev": "npm run dev --prefix frontend",

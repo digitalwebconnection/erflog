@@ -75,13 +75,13 @@ router.post(
 
       // ── Card thumbnail
       if (files.image?.[0]) {
-        body.image = await maybeUpload(files.image[0], 'excelencia/countries');
+        body.image = await maybeUpload(files.image[0], 'erfolg/countries');
       }
 
       // ── Hero background images
       if (files.heroBackgroundImages?.length) {
         const urls = await Promise.all(
-          files.heroBackgroundImages.map(f => uploadToCloudinary(f.buffer, 'excelencia/hero'))
+          files.heroBackgroundImages.map(f => uploadToCloudinary(f.buffer, 'erfolg/hero'))
         );
         body.hero = body.hero || {};
         // Merge with any string URLs already in body.hero.backgroundImages
@@ -97,7 +97,7 @@ router.post(
         for (let i = 0; i < body.whyStudy.points.length; i++) {
           if (body.whyStudy.points[i]._uploadImage && files.whyStudyImages[fi]) {
             body.whyStudy.points[i].image = await uploadToCloudinary(
-              files.whyStudyImages[fi].buffer, 'excelencia/why-study'
+              files.whyStudyImages[fi].buffer, 'erfolg/why-study'
             );
             fi++;
           }
@@ -110,7 +110,7 @@ router.post(
         for (let i = 0; i < body.documents.list.length; i++) {
           if (body.documents.list[i]._uploadImage && files.documentImages[fi]) {
             body.documents.list[i].image = await uploadToCloudinary(
-              files.documentImages[fi].buffer, 'excelencia/documents'
+              files.documentImages[fi].buffer, 'erfolg/documents'
             );
             fi++;
           }
@@ -123,7 +123,7 @@ router.post(
         for (let i = 0; i < body.courses.list.length; i++) {
           if (body.courses.list[i]._uploadImage && files.courseImages[fi]) {
             body.courses.list[i].image = await uploadToCloudinary(
-              files.courseImages[fi].buffer, 'excelencia/courses'
+              files.courseImages[fi].buffer, 'erfolg/courses'
             );
             fi++;
           }
@@ -132,9 +132,9 @@ router.post(
 
       // Clean up helper flags
       const cleanPoints = arr => arr?.map(({ _uploadImage, _previewUrl, ...rest }) => rest);
-      if (body.whyStudy?.points)  body.whyStudy.points  = cleanPoints(body.whyStudy.points);
-      if (body.documents?.list)   body.documents.list   = cleanPoints(body.documents.list);
-      if (body.courses?.list)     body.courses.list     = cleanPoints(body.courses.list);
+      if (body.whyStudy?.points) body.whyStudy.points = cleanPoints(body.whyStudy.points);
+      if (body.documents?.list) body.documents.list = cleanPoints(body.documents.list);
+      if (body.courses?.list) body.courses.list = cleanPoints(body.courses.list);
 
       const country = await Country.create(body);
       res.status(201).json(country);
@@ -164,12 +164,12 @@ router.put(
       const files = req.files || {};
 
       if (files.image?.[0]) {
-        body.image = await maybeUpload(files.image[0], 'excelencia/countries');
+        body.image = await maybeUpload(files.image[0], 'erfolg/countries');
       }
 
       if (files.heroBackgroundImages?.length) {
         const urls = await Promise.all(
-          files.heroBackgroundImages.map(f => uploadToCloudinary(f.buffer, 'excelencia/hero'))
+          files.heroBackgroundImages.map(f => uploadToCloudinary(f.buffer, 'erfolg/hero'))
         );
         body.hero = body.hero || {};
         body.hero.backgroundImages = [
@@ -183,7 +183,7 @@ router.put(
         for (let i = 0; i < body.whyStudy.points.length; i++) {
           if (body.whyStudy.points[i]._uploadImage && files.whyStudyImages[fi]) {
             body.whyStudy.points[i].image = await uploadToCloudinary(
-              files.whyStudyImages[fi].buffer, 'excelencia/why-study'
+              files.whyStudyImages[fi].buffer, 'erfolg/why-study'
             );
             fi++;
           }
@@ -195,7 +195,7 @@ router.put(
         for (let i = 0; i < body.documents.list.length; i++) {
           if (body.documents.list[i]._uploadImage && files.documentImages[fi]) {
             body.documents.list[i].image = await uploadToCloudinary(
-              files.documentImages[fi].buffer, 'excelencia/documents'
+              files.documentImages[fi].buffer, 'erfolg/documents'
             );
             fi++;
           }
@@ -207,7 +207,7 @@ router.put(
         for (let i = 0; i < body.courses.list.length; i++) {
           if (body.courses.list[i]._uploadImage && files.courseImages[fi]) {
             body.courses.list[i].image = await uploadToCloudinary(
-              files.courseImages[fi].buffer, 'excelencia/courses'
+              files.courseImages[fi].buffer, 'erfolg/courses'
             );
             fi++;
           }
@@ -215,17 +215,17 @@ router.put(
       }
 
       const cleanPoints = arr => arr?.map(({ _uploadImage, _previewUrl, ...rest }) => rest);
-      if (body.whyStudy?.points)  body.whyStudy.points  = cleanPoints(body.whyStudy.points);
-      if (body.documents?.list)   body.documents.list   = cleanPoints(body.documents.list);
-      if (body.courses?.list)     body.courses.list     = cleanPoints(body.courses.list);
+      if (body.whyStudy?.points) body.whyStudy.points = cleanPoints(body.whyStudy.points);
+      if (body.documents?.list) body.documents.list = cleanPoints(body.documents.list);
+      if (body.courses?.list) body.courses.list = cleanPoints(body.courses.list);
 
       const country = await Country.findById(req.params.id);
       if (!country) return res.status(404).json({ message: 'Country not found' });
-      
+
       // Update fields
       Object.assign(country, body);
       await country.save();
-      
+
       res.json(country);
     } catch (err) {
       console.error(err);

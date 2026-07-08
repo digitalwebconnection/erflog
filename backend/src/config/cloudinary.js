@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 // Upload a buffer to Cloudinary and return the secure URL
-const uploadToCloudinary = (buffer, folder = 'excelencia') => {
+const uploadToCloudinary = (buffer, folder = 'erfolg') => {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       { folder, resource_type: 'image' },

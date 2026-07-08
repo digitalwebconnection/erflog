@@ -68,6 +68,7 @@ const Navbar = () => {
     if (path.startsWith("/admission")) return "University Admission";
     if (path === "/scholarships") return "Scholarships & Funding";
     if (path === "/alumni") return "Alumni";
+    if (path.startsWith("/blog")) return "Blog";
     if (path === "/contact") return "Contact Us";
     return "";
   };
@@ -218,6 +219,17 @@ const Navbar = () => {
               onClick={scrollToTop}
             >
               Alumni Stories
+            </Link>
+          </li>
+
+          {/* Blog */}
+          <li>
+            <Link
+              to="/blog"
+              className={menuItemClass("Blog")}
+              onClick={scrollToTop}
+            >
+              Blog
             </Link>
           </li>
 
@@ -379,6 +391,15 @@ const Navbar = () => {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Alumni Stories
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/blog"
+                      className={`block py-2 ${location.pathname.startsWith("/blog") ? "text-[#FDC017]" : "text-white"}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Blog
                     </Link>
                   </li>
                   <li>

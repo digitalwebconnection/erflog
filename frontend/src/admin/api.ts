@@ -91,3 +91,23 @@ export const deleteCountry = async (id: string) => {
   }
   return res.json();
 };
+
+/* ── Blogs ────────────────────────────────────────────── */
+export const getBlogs = async () => {
+  const res = await fetch(`${API_BASE}/blogs`);
+  if (!res.ok) throw new Error('Failed to fetch blogs');
+  const data = await res.json();
+  return data.data;
+};
+
+export const deleteBlog = async (id: string) => {
+  const res = await fetch(`${API_BASE}/blogs/${id}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.message || 'Failed to delete blog');
+  }
+  return res.json();
+};
