@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { Edit3, FileText, Send, ShieldCheck, CheckCircle2, ClipboardCheck } from "lucide-react";
 import { SplitText } from "../../About/Shared";
@@ -7,6 +8,36 @@ const EditingSubmission = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Title */}
+        <title>Study Abroad Application Guidance | Application Experts</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Get personalized study abroad application guidance, document review, and expert submission support for top universities worldwide."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="study abroad application guidance, application experts, Erfolg Solutions, document review, SOP review, LOR guidance, university submission support"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/admission/submission" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Study Abroad Application Guidance | Application Experts" />
+        <meta property="og:description" content="Get personalized study abroad application guidance, document review, and expert submission support for top universities worldwide." />
+        <meta property="og:url" content="https://erfolg.in/admission/submission" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Study Abroad Application Guidance | Application Experts" />
+        <meta name="twitter:description" content="Get personalized study abroad application guidance, document review, and expert submission support for top universities worldwide." />
+      </Helmet>
       {/* Hero Section - 90vh Full-Width Background */}
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}

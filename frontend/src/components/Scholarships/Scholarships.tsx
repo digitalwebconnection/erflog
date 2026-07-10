@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { 
   Award, Globe, ArrowRight, DollarSign, Target, ChevronDown,
   Search, Filter, Calendar, MapPin, GraduationCap, UserCheck, Compass, FileText, CheckCircle2
@@ -258,6 +259,36 @@ const Scholarships = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Title */}
+        <title>Study Abroad Scholarships Mumbai | Trusted Scholarship Help</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Explore study abroad scholarships Mumbai with expert guidance on merit scholarships, funding options, education loans, and university applications."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="study abroad scholarships Mumbai, scholarship help, merit scholarships, funding options, education loans, university applications, Erfolg Solutions"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/scholarships" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Study Abroad Scholarships Mumbai | Trusted Scholarship Help" />
+        <meta property="og:description" content="Explore study abroad scholarships Mumbai with expert guidance on merit scholarships, funding options, education loans, and university applications." />
+        <meta property="og:url" content="https://erfolg.in/scholarships" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Study Abroad Scholarships Mumbai | Trusted Scholarship Help" />
+        <meta name="twitter:description" content="Explore study abroad scholarships Mumbai with expert guidance on merit scholarships, funding options, education loans, and university applications." />
+      </Helmet>
       {/* Hero Section - 90vh Full-Width Background */}
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}

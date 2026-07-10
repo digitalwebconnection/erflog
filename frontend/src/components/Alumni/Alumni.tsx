@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Globe, Award, Heart, CheckCircle2, ChevronRight, Plane, Home, Briefcase } from "lucide-react";
 import { SplitText, Counter, FloatingShape, containerVariants, itemVariants } from "../About/Shared";
 import { Link } from "react-router-dom";
@@ -107,6 +108,36 @@ const Alumni = () => {
 
   return (
     <div className="bg-white min-h-screen selection:bg-[#FDC017] selection:text-[#031627]">
+      <Helmet>
+        {/* Title */}
+        <title>Study Abroad Success Stories Mumbai | Trusted Alumni Stories</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="See how students achieved their study abroad dreams through expert counseling, top university admissions, and personalized guidance in Mumbai."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="study abroad success stories, alumni stories Mumbai, Erfolg Solutions, study abroad counseling, university admissions, personalized guidance"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/alumni" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Study Abroad Success Stories Mumbai | Trusted Alumni Stories" />
+        <meta property="og:description" content="See how students achieved their study abroad dreams through expert counseling, top university admissions, and personalized guidance in Mumbai." />
+        <meta property="og:url" content="https://erfolg.in/alumni" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Study Abroad Success Stories Mumbai | Trusted Alumni Stories" />
+        <meta name="twitter:description" content="See how students achieved their study abroad dreams through expert counseling, top university admissions, and personalized guidance in Mumbai." />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative h-[90vh] py-20 lg:py-28 flex items-center bg-[#031627] text-white overflow-hidden">
         {/* Subtle patterned overlay */}

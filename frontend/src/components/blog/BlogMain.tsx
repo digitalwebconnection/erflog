@@ -6,36 +6,36 @@ const BlogMain = () => {
     <>
       <Helmet>
         {/* Title */}
-        <title>Solar Energy Insights & Blog | erfolg Energy</title>
+        <title>Study Abroad Blogs | Visa, Scholarships & University Tips</title>
 
         {/* Meta Description */}
         <meta
           name="description"
-          content="Read our solar blog for expert tips, installation guides, and updates on solar energy. Discover ways to save electricity and go solar."
+          content="Read study abroad blogs with practical advice on university selection, applications, scholarships, visas, and studying abroad successfully."
         />
 
         {/* Keywords */}
         <meta
           name="keywords"
-          content="solar energy blog India, solar tips and guides, rooftop solar blog, solar installation advice, renewable energy blog India"
+          content="study abroad blogs, study visa tips, scholarship advice, university selection, overseas education tips, admissions guidance"
         />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://erfolg.in/Knowledge/" />
+        <link rel="canonical" href="https://erfolg.in/blog" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Solar Energy Blog | erfolg Energy Insights" />
-        <meta property="og:description" content="Expert tips, guides, and updates on solar energy to help you save electricity and make smart energy decisions." />
-        <meta property="og:url" content="https://erfolg.in/Knowledge/" />
+        <meta property="og:title" content="Study Abroad Blogs | Visa, Scholarships & University Tips" />
+        <meta property="og:description" content="Read study abroad blogs with practical advice on university selection, applications, scholarships, visas, and studying abroad successfully." />
+        <meta property="og:url" content="https://erfolg.in/blog" />
         <meta property="og:type" content="website" />
 
         {/* OG Image */}
-        <meta property="og:image" content="https://erfolg.in/solar-blog.jpg" />
+        <meta property="og:image" content="https://erfolg.in/blog-hero2.jpg" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Solar Energy Blog & Insights" />
-        <meta name="twitter:description" content="Learn about solar installation, savings, and energy efficiency with our expert blog." />
+        <meta name="twitter:title" content="Study Abroad Blogs | Visa, Scholarships & University Tips" />
+        <meta name="twitter:description" content="Read study abroad blogs with practical advice on university selection, applications, scholarships, visas, and studying abroad successfully." />
       </Helmet>
 
       <SolarBlogPage />

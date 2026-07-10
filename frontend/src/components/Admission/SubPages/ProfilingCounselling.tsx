@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { UserCheck, Compass, Target, MessageSquare, ShieldCheck, Heart, Lightbulb, Zap } from "lucide-react";
 import { SplitText } from "../../About/Shared";
@@ -27,6 +28,36 @@ const ProfilingCounselling = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Title */}
+        <title>Study Abroad Profile Evaluation Mumbai | Erfolg Solutions</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Get expert study abroad profile evaluation in Mumbai with personalized counselling, university shortlisting, career guidance, and admission planning."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="study abroad profile evaluation, profile evaluation Mumbai, Erfolg Solutions, personalized counselling, university shortlisting, career guidance, admission planning"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/admission/profiling" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Study Abroad Profile Evaluation Mumbai | Erfolg Solutions" />
+        <meta property="og:description" content="Get expert study abroad profile evaluation in Mumbai with personalized counselling, university shortlisting, career guidance, and admission planning." />
+        <meta property="og:url" content="https://erfolg.in/admission/profiling" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Study Abroad Profile Evaluation Mumbai | Erfolg Solutions" />
+        <meta name="twitter:description" content="Get expert study abroad profile evaluation in Mumbai with personalized counselling, university shortlisting, career guidance, and admission planning." />
+      </Helmet>
       {/* Hero Section - 90vh Full-Width Background */}
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}

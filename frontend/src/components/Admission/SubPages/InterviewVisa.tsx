@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { Mic, Video, Users, CheckCircle, FileCheck, Landmark, Clock } from "lucide-react";
 import { SplitText } from "../../About/Shared";
@@ -7,6 +8,36 @@ const InterviewVisa = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Title */}
+        <title>International Student Visa Assistance | Visa Consultants</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Get trusted international student visa assistance with expert documentation, interview preparation, and application support from Erfolg Solutions."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="international student visa assistance, visa consultants, Erfolg Solutions, visa documentation, mock interview preparation, visa application support"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/admission/visa" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="International Student Visa Assistance | Visa Consultants" />
+        <meta property="og:description" content="Get trusted international student visa assistance with expert documentation, interview preparation, and application support from Erfolg Solutions." />
+        <meta property="og:url" content="https://erfolg.in/admission/visa" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="International Student Visa Assistance | Visa Consultants" />
+        <meta name="twitter:description" content="Get trusted international student visa assistance with expert documentation, interview preparation, and application support from Erfolg Solutions." />
+      </Helmet>
       {/* Hero Section - 90vh Full-Width Background */}
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}

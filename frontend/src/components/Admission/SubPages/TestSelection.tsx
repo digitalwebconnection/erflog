@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import type { Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Globe, Award, CheckCircle, MapPin, Briefcase, Star } from "lucide-react";
@@ -43,6 +44,36 @@ const TestSelection = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        {/* Title */}
+        <title>Study Abroad Admission Guidance | Start Your Journey</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Looking for study abroad admission guidance? Get expert advice on university selection, course planning, and overseas admissions with Erfolg Solutions."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="study abroad admission guidance, university selection, course planning, overseas admissions, Erfolg Solutions, exam prep, IELTS GRE coaching"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://erfolg.in/admission/selection" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Study Abroad Admission Guidance | Start Your Journey" />
+        <meta property="og:description" content="Looking for study abroad admission guidance? Get expert advice on university selection, course planning, and overseas admissions with Erfolg Solutions." />
+        <meta property="og:url" content="https://erfolg.in/admission/selection" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Study Abroad Admission Guidance | Start Your Journey" />
+        <meta name="twitter:description" content="Looking for study abroad admission guidance? Get expert advice on university selection, course planning, and overseas admissions with Erfolg Solutions." />
+      </Helmet>
       {/* Hero Section - 90vh Full-Width Background */}
       <section className="relative h-[90vh] py-20 flex items-center justify-center text-center bg-[#031627] text-white overflow-hidden">
         {/* Full-Width Background Image with Dark Overlay */}
